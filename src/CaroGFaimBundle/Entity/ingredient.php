@@ -3,9 +3,12 @@
 namespace CaroGFaimBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ingredient
+ *
+ * @UniqueEntity(fields="libelle", message="Cet ingrédient existe déjà.")
  */
 class ingredient
 {

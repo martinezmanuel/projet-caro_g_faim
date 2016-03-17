@@ -82,7 +82,7 @@ class categorieController extends Controller
             $em->persist($categorie);
             $em->flush();
 
-            return $this->redirectToRoute('categorie_edit', array('id' => $categorie->getId()));
+            return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
         }
 
         return $this->render('categorie/edit.html.twig', array(

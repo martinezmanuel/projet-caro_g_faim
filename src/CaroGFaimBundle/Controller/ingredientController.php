@@ -82,7 +82,7 @@ class ingredientController extends Controller
             $em->persist($ingredient);
             $em->flush();
 
-            return $this->redirectToRoute('ingredient_edit', array('id' => $ingredient->getId()));
+            return $this->redirectToRoute('ingredient_show', array('id' => $ingredient->getId()));
         }
 
         return $this->render('ingredient/edit.html.twig', array(
