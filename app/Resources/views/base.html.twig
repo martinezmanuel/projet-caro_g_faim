@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/carogfaim/css/stylesheet.css') }}" type="text/css" >
+        {% endblock %}
+
+
+
     </head>
-    <body>
-        {% include 'header.html.twig' %}
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+
+<body>
+<ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="/">Accueil</a></li>
+    <li role="presentation"><a href="/categorie">Catégories</a></li>
+    <li role="presentation"><a href="/ingredient">Ingrédients</a></li>
+    <li role="presentation"><a href="#">Personnes</a></li>
+    <li role="presentation"><a href="#">Plats</a></li>
+    <li role="presentation"><a href="#">Dîners</a></li>
+    <li role="presentation"><a href="#">Mes paramètres</a></li>
+    <li role="presentation"><a href="#">Déconnexion</a></li>
+</ul>
+
+{%  block body %}
+
+
+{%  endblock %}
+</body>
 </html>
+
