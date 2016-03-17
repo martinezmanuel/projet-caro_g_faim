@@ -1,0 +1,11 @@
+caro_g_faim_categorie:
+    resource: "@CaroGFaimBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+
+caro_g_faim_ingredient:
+    resource: "@CaroGFaimBundle/Resources/config/routing/ingredient.yml"
+    prefix:   /ingredient
+
+caro_g_faim_homepage:
+    path:     /
+    defaults: { _controller: CaroGFaimBundle:Default:index }

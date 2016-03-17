@@ -1,0 +1,20 @@
+CaroGFaimBundle\Entity\categorie:
+    type: entity
+    table: null
+    repositoryClass: CaroGFaimBundle\Repository\categorieRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+            unique: true
+    oneToMany:
+        ingredients:
+            targetEntity: ingredient
+            mappedBy: categorie
+    lifecycleCallbacks: {  }

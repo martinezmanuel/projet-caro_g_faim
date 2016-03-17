@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste de catégories d'ingrédients</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Libellé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.libelle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Modifier</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorie_delete', { 'id': categorie.id }) }}">supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie d'ingrédient</a>
+        </li>
+    </ul>
+{% endblock %}

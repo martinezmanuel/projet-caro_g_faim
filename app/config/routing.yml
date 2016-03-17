@@ -1,0 +1,7 @@
+caro_g_faim:
+    resource: "@CaroGFaimBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
