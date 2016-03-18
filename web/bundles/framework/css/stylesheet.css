@@ -1,0 +1,70 @@
+ul#menu li ul {display: none;}          /* On cache les sous éléments */
+ul#menu li:hover > ul {display: block;} /* On affiche les éléments survolés par la souris */
+ul#menu * {z-index: 60000;}             /* Permet au menu de passer au dessus des autres éléments de la page */
+
+
+ul#menu{
+    margin: 0px 0px 10px 0px;           /* On ajoute un espace de 10px, en dessous du menu */
+    width: 200px;                       /* Définit la taille du menu*/
+}
+
+ul#menu, ul#menu ul{                    /* On selectionne le menu et les sous menus */
+    list-style: none;                   /* Supprime les puces */
+    border-top: solid 1px #dcdcdc;      /* On met des lignes en haut et bas des blocs "ul" */
+    border-bottom: solid 1px #000000;   /* On mettra ensuite des lignes à gauche à droie sur les elements "li" */
+    background-color: #ECECEC;          /* Couleur de fond du menu */
+    margin:0px; padding:0px;            /* On supprime tout les espaces entre les menus */
+}
+
+ul#menu ul{
+    margin: 0px;                        /* Enleve les marges de gauche, pour que le sous menu colle son parent */
+    position: absolute;                 /* Permet de positionner le sous menu par rapport à son element parent */
+    top: -1px;                          /* On remonte le sous menu de 1px, la hauteur de la bordure */
+    left: 199px;                        /* Le menu se place à 199px du bord droit, juste au dessus de la bordure du menu */
+    width: 300px;                       /* On définit la taille des sous menus à 300px */
+}
+
+ul#menu ul ul {left: 299px;}            /* Position des sous sous menus */
+
+ul#menu li{
+    background-image: url(images/fdH1L200D1.jpg);   /* Image des fonds des elements non survolés */
+    background-repeat: repeat-y;        /* L'image de fond ne se repete que selon l'axe y */
+    background-color: #C6C6C6;          /* Couleur de fond, cette couleur sera affiché aprés l'image */
+    position: relative;                 /* Permet de positionner le sous menu par rapport à son element parent */
+    border-left: solid 1px #dcdcdc;     /* Ici on met les lignes à droite et gauche des elements du menu */
+    border-right: solid 1px #000000;    /* Lignes du menu */
+    height:20px;line-height:20px;       /* On fixe la hauteur de l'element à 20px */
+}
+
+ul#menu li a{
+    display: block;                     /* On ne peut pas mettre de largeur a un element inline */
+    width: 188px;                       /* 200px du menu - 2*1px de bordure - 10px de padding */
+    padding-left: 10px;                 /* On ecarte le texte de 10px des bordures du menu */
+    font-weight: bold;                  /* mis en gras du texte*/
+    font-size: 11px;                    /* taille du texte */
+    color: #11589B;                     /* Couleur du texte */
+    text-decoration:none;               /* Aura pour effet de supprimer la ligne du lien */
+}
+ul#menu li li a{width: 288px;}          /* les sous elements font 300px - 2*1px de bordure - 10px de padding */
+
+* html ul#menu li a {display: inline-block;}    /* Hack pour IE pour forcer le texte à se positionner au milieu */
+
+ul#menu li a:hover{
+    background-image: url(images/fdh20.jpg);    /* Image des elements survolés */
+    background-position: inherit bottom;        /* L'arriere plan se trouve en bas  */
+    background-repeat: repeat-x;        /* On affiche l'arriere plan seulement dans l'axe x */
+    background-color: #ECECEC;          /* Couleur de fond, la ou l'image d'arriere plan ne sera pas visible */
+    text-decoration: underline;         /* On souligne le lien quand la souris passe au dessus*/
+    color: #448BCE;                     /* Couleur du texte */
+    border-bottom: solid 1px #000000;   /* On met une ligne en haut et en bas */
+    border-top: solid 1px #dcdcdc;      /* */
+    line-height:18px;                   /* On met la hauteur de la ligne à 18px pour tenir compte des 2px rajoutés par les bordures */
+}
+
+ul#menu li span{
+    background-image: url(images/expand-closed.gif);    /* Image pour indiquer que cet element possede des sous elements */
+    background-position: right center;  /* l'image d'arriere plan se situe au milieu de ligne à a droite*/
+    background-repeat: no-repeat;       /* l'image n'est affiché qu'une seule fois */
+    display: block;                     /* Utile pour mettre du margin à droite */
+    margin-right: 10px;                 /* laisse de la place à l'image si le texte est long */
+}
