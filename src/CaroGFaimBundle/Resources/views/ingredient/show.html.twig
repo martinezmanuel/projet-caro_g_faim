@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ingredient</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('ingredient_index') }}">Retour</a>
+        </li>
+    </ul>
+    <table>
+        <tbody>
+            <tr>
+                <th>Libellé&#8239;:&nbsp;</th>
+                <td>{{ ingredient.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Catégorie&#8239;:&nbsp;</th>
+                <td>{{ ingredient.categorie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

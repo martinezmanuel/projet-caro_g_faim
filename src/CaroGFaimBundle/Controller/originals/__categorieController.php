@@ -24,7 +24,7 @@ class categorieController extends Controller
 
         $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
 
-        return $this->render('categorie/index.html.twig', array(
+        return $this->render('CaroGFaimBundle:categorie:index.html.twig', array(
             'categories' => $categories,
         ));
     }

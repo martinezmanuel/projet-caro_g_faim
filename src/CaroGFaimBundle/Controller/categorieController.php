@@ -14,6 +14,16 @@ use CaroGFaimBundle\Form\categorieType;
  */
 class categorieController extends Controller
 {
+    /*
+     * @var string
+     */
+    private $path_views;
+
+    public function __construct()
+    {
+        $this->path_views = 'CaroGFaimBundle:categorie:';
+    }
+
     /**
      * Lists all categorie entities.
      *
@@ -24,7 +34,7 @@ class categorieController extends Controller
 
         $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
 
-        return $this->render('categorie/index.html.twig', array(
+        return $this->render("{$this->path_views}index.html.twig", array(
             'categories' => $categories,
         ));
     }
@@ -47,7 +57,7 @@ class categorieController extends Controller
             return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
         }
 
-        return $this->render('categorie/new.html.twig', array(
+        return $this->render("{$this->path_views}new.html.twig", array(
             'categorie' => $categorie,
             'form' => $form->createView(),
         ));
@@ -61,9 +71,9 @@ class categorieController extends Controller
     {
         $deleteForm = $this->createDeleteForm($categorie);
 
-        return $this->render('categorie/show.html.twig', array(
+        return $this->render("{$this->path_views}show.html.twig", array(
             'categorie' => $categorie,
-            'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -73,7 +83,6 @@ class categorieController extends Controller
      */
     public function editAction(Request $request, categorie $categorie)
     {
-        $deleteForm = $this->createDeleteForm($categorie);
         $editForm = $this->createForm('CaroGFaimBundle\Form\categorieType', $categorie);
         $editForm->handleRequest($request);
 
@@ -82,13 +91,12 @@ class categorieController extends Controller
             $em->persist($categorie);
             $em->flush();
 
-            return $this->redirectToRoute('categorie_edit', array('id' => $categorie->getId()));
+            return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
         }
 
-        return $this->render('categorie/edit.html.twig', array(
+        return $this->render("{$this->path_views}edit.html.twig", array(
             'categorie' => $categorie,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'edit_form' => $editForm->createView()
         ));
     }
 
@@ -98,9 +106,15 @@ class categorieController extends Controller
      */
     public function deleteAction(Request $request, categorie $categorie)
     {
+     //   $form = $this->createDeleteForm($categorie);
+     //   $form->handleRequest($request);
+
+     //   if ($form->isSubmitted() && $form->isValid())
+        {
             $em = $this->getDoctrine()->getManager();
             $em->remove($categorie);
             $em->flush();
+        }
 
         return $this->redirectToRoute('categorie_index');
     }
