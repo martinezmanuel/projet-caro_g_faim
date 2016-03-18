@@ -11,6 +11,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @UniqueEntity(fields="libelle", message="Cette catégorie existe déjà.")
  */
+
+
 class categorie
 {
     /**

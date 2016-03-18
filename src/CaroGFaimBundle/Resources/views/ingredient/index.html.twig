@@ -25,7 +25,7 @@
                             <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</a>
                         </li>
                         <li>
-                            <a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}">Supprimer</a>
+                            <a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a>
                         </li>
                     </ul>
                 </td>

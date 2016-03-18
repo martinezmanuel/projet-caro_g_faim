@@ -23,7 +23,11 @@
                             <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Modifier</a>
                         </li>
                         <li>
-                            <a href="{{ path('categorie_delete', { 'id': categorie.id }) }}">supprimer</a>
+                            {% if categorie.ingredients.count %}
+                                supprimer
+                            {% else %}
+                                <a href="{{ path('categorie_delete', { 'id': categorie.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">supprimer</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </td>

@@ -3,6 +3,12 @@
 {% block body %}
     <h1>Catégorie d'ingrédient</h1>
 
+    <ul>
+        <li>
+            <a href="{{ path('categorie_index') }}">Retour</a>
+        </li>
+    </ul>
+
     <table>
         <tbody>
             <tr>
@@ -12,9 +18,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('categorie_index') }}">Retour</a>
-        </li>
-    </ul>
 {% endblock %}
