@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>type_plat list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_plat in type_plats %}
+            <tr>
+                <td><a href="{{ path('type_plat_show', { 'id': type_plat.id }) }}">{{ type_plat.id }}</a></td>
+                <td>{{ type_plat.libelle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('type_plat_show', { 'id': type_plat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('type_plat_edit', { 'id': type_plat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('type_plat_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -9,3 +9,11 @@ caro_g_faim_ingredient:
 caro_g_faim_homepage:
     path:     /
     defaults: { _controller: CaroGFaimBundle:Default:index }
+
+caro_g_faim_plat:
+      resource: "@CaroGFaimBundle/Resources/config/routing/plat.yml"
+      prefix:   /plat
+
+caro_g_faim_type_plat:
+        resource: "@CaroGFaimBundle/Resources/config/routing/type_plat.yml"
+        prefix:   /type_plat
