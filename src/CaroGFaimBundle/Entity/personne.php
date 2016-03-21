@@ -2,18 +2,14 @@
 
 namespace CaroGFaimBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
- * categorie
- *
- * @UniqueEntity(fields="libelle", message="Cette catégorie existe déjà.")
+ * personne
  */
-
-
-class categorie
+class personne
 {
     /**
      * @var int
@@ -23,16 +19,20 @@ class categorie
     /**
      * @var string
      */
-    private $libelle;
+    private $nom;
+
+    /**
+     * @var string
+     */
+    private $prenom;
 
     /**
      * @var ArrayCollection
      */
     private $ingredients;
 
-
     /**
-     * Constructor
+     * constructor
      */
     public function __construct()
     {
@@ -50,43 +50,56 @@ class categorie
     }
 
     /**
-     * Set libelle
+     * Set nom
      *
-     * @param string $libelle
-     * @return categorie
+     * @param string $nom
+     * @return personne
      */
-    public function setLibelle($libelle)
+    public function setNom($nom)
     {
-        $this->libelle = $libelle;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get libelle
+     * Get nom
      *
      * @return string 
      */
-    public function getLibelle()
+    public function getNom()
     {
-        return $this->libelle;
+        return $this->nom;
     }
 
-    /*
-     * Get libelle when calling object directly
+    /**
+     * Set prenom
      *
-     * @return string
+     * @param string $prenom
+     * @return personne
      */
-    public function __toString()
+    public function setPrenom($prenom)
     {
-        return $this->libelle;
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string 
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
     }
 
     /**
      * Add ingredients
      *
      * @param \CaroGFaimBundle\Entity\ingredient $ingredients
-     * @return categorie
+     * @return personne
      */
     public function addIngredient(\CaroGFaimBundle\Entity\ingredient $ingredients)
     {

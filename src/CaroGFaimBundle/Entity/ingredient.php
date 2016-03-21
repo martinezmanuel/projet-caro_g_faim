@@ -4,6 +4,7 @@ namespace CaroGFaimBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ingredient
@@ -26,6 +27,27 @@ class ingredient
      * @var int
      */
     private $fid_categorie;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $personnes;
+
+    /**
+     * constructor
+     */
+    public function __construct()
+    {
+        $this->personnes = new ArrayCollection();
+    }
+
+    /**
+     * return label
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
 
 
     /**
@@ -87,5 +109,38 @@ class ingredient
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Add personnes
+     *
+     * @param \CaroGFaimBundle\Entity\personne $personnes
+     * @return ingredient
+     */
+    public function addPersonne(\CaroGFaimBundle\Entity\personne $personnes)
+    {
+        $this->personnes[] = $personnes;
+
+        return $this;
+    }
+
+    /**
+     * Remove personnes
+     *
+     * @param \CaroGFaimBundle\Entity\personne $personnes
+     */
+    public function removePersonne(\CaroGFaimBundle\Entity\personne $personnes)
+    {
+        $this->personnes->removeElement($personnes);
+    }
+
+    /**
+     * Get personnes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPersonnes()
+    {
+        return $this->personnes;
     }
 }

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mes amis</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('personne_new') }}">Ajouter un(e) nouvel(le) ami(e)</a>
+        </li>
+    </ul>
+
+    <div style="text-align: right" class="column-list">
+        {% for personne in personnes %}
+            <span>
+                <a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.nom }} {{ personne.prenom }}</a>
+            </span>
+            <span>
+                 <button>
+                    <a href="{{ path('personne_edit', { 'id': personne.id }) }}">modif.</a>&nbsp;
+                </button>
+                <button>
+                    <a href="{{ path('personne_delete', { 'id': personne.id }) }}">suppr.</a>
+                </button>
+                <br>
+            </span>
+        {% endfor %}
+    </div>
+
+{% endblock %}

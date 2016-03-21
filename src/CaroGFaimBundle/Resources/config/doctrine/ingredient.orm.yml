@@ -21,4 +21,8 @@ CaroGFaimBundle\Entity\ingredient:
                 name: fid_categorie
                 referencedColumn: id
                 nullable: false
+    manyToMany:
+        personnes:
+            targetEntity: personne
+            mappedBy: ingredients
     lifecycleCallbacks: {  }

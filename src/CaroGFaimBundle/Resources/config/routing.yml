@@ -9,3 +9,11 @@ caro_g_faim_ingredient:
 caro_g_faim_homepage:
     path:     /
     defaults: { _controller: CaroGFaimBundle:Default:index }
+
+caro_g_faim_personne:
+    resource: "@CaroGFaimBundle/Resources/config/routing/personne.yml"
+    prefix:   /personne
+
+caro_g_faim_diner:
+    resource: "@CaroGFaimBundle/Resources/config/routing/diner.yml"
+    prefix:   /diner

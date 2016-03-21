@@ -1,0 +1,28 @@
+.column-list {
+    margin: auto;
+    /*background-color: red;*/
+    width: 70%;
+    /*height: 250px;*/
+    column-count: 3;
+    column-gap: 5%;
+    column-rule: solid 1px black;
+    column-width: 30%;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -webkit-column-gap: 5%; /* Chrome, Safari, Opera */
+    -webkit-column-rule: solid 1px black; /* Chrome, Safari, Opera */
+    -webkit-column-width: 30%; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    -moz-column-gap: 5%; /* Firefox */
+    -moz-column-rule: solid 1px black; /* Firefox */
+}
+.column-list span:nth-child(odd) {
+}
+.column-list span:nth-child(even) {
+
+}
+.column-list button {
+    margin: 0.2em 0.1em;
+}
+h1 {
+    text-align: center;
+}

@@ -3,9 +3,13 @@
 namespace CaroGFaimBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ingredient
+ *
+ * @UniqueEntity(fields="libelle", message="Cet ingrédient existe déjà.")
  */
 class ingredient
 {
@@ -23,6 +27,27 @@ class ingredient
      * @var int
      */
     private $fid_categorie;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $personnes;
+
+    /**
+     * constructor
+     */
+    public function __construct()
+    {
+        $this->personnes = new ArrayCollection();
+    }
+
+    /**
+     * return label
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
 
 
     /**
@@ -56,5 +81,33 @@ class ingredient
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    /**
+     * @var \CaroGFaimBundle\Entity\categorie
+     */
+    private $categorie;
+
+
+    /**
+     * Set categorie
+     *
+     * @param \CaroGFaimBundle\Entity\categorie $categorie
+     * @return ingredient
+     */
+    public function setCategorie(\CaroGFaimBundle\Entity\categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \CaroGFaimBundle\Entity\categorie 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }

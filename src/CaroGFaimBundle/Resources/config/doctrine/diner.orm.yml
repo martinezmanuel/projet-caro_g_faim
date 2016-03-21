@@ -1,0 +1,19 @@
+CaroGFaimBundle\Entity\diner:
+    type: entity
+    table: null
+    repositoryClass: CaroGFaimBundle\Repository\dinerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateDiner:
+            type: datetime
+            unique: true
+            column: date_diner
+        estArchive:
+            type: boolean
+            column: est_archive
+    lifecycleCallbacks: {  }

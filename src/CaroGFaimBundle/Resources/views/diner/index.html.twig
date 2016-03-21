@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>diner list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datediner</th>
+                <th>Estarchive</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for diner in diners %}
+            <tr>
+                <td><a href="{{ path('diner_show', { 'id': diner.id }) }}">{{ diner.id }}</a></td>
+                <td>{% if diner.dateDiner %}{{ diner.dateDiner|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if diner.estArchive %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('diner_show', { 'id': diner.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('diner_edit', { 'id': diner.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('diner_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

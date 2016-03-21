@@ -1,0 +1,24 @@
+diner_index:
+    path:     /
+    defaults: { _controller: "CaroGFaimBundle:diner:index" }
+    methods:  GET
+
+diner_show:
+    path:     /{id}/show
+    defaults: { _controller: "CaroGFaimBundle:diner:show" }
+    methods:  GET
+
+diner_new:
+    path:     /new
+    defaults: { _controller: "CaroGFaimBundle:diner:new" }
+    methods:  [GET, POST]
+
+diner_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CaroGFaimBundle:diner:edit" }
+    methods:  [GET, POST]
+
+diner_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CaroGFaimBundle:diner:delete" }
+    methods:  DELETE

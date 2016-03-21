@@ -1,0 +1,29 @@
+CaroGFaimBundle\Entity\personne:
+    type: entity
+    table: null
+    repositoryClass: CaroGFaimBundle\Repository\personneRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+    manyToMany:
+        ingredients:
+            targetEntity: ingredient
+            joinTable:
+                name: ne_pas_manger
+                joinColumns:
+                    fid_personne:
+                        referenceColumnName: id
+                inverseJoinColumns:
+                    fid_ingredient:
+                        referenceColumnName: id
+    lifecycleCallbacks: {  }
