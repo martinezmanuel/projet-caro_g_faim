@@ -3,6 +3,7 @@
     /*background-color: red;*/
     width: 70%;
     /*height: 250px;*/
+    text-align: right;
     column-count: 3;
     column-gap: 5%;
     column-rule: solid 1px black;
@@ -22,18 +23,4 @@
 }
 .column-list button {
     margin: 0.2em 0.1em;
-}
-h1 {
-    text-align: center;
-}
-
-body {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f8ffe8+0,e3f5ab+33,b7df2d+100;Green+3D+%234 */
-    background: rgb(248,255,232); /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover,  rgba(248,255,232,1) 0%, rgba(227,245,171,1) 33%, rgba(183,223,45,1) 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover,  rgba(248,255,232,1) 0%,rgba(227,245,171,1) 33%,rgba(183,223,45,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center,  rgba(248,255,232,1) 0%,rgba(227,245,171,1) 33%,rgba(183,223,45,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8ffe8', endColorstr='#b7df2d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    height: 100vh;
-    background-size: cover;
 }

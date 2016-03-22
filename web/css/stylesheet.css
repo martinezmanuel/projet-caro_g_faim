@@ -17,7 +17,9 @@
 
 .navbar {
     border-radius: 0px;
-    margin: 0 -35px;
+    /* margin: 0 -35px; */
+    width: 105%;
+    margin-left: -2.5%;
 }
 
 .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
@@ -25,45 +27,35 @@
 }
 
 .bandeau {
-    vertical-align: none;
+    vertical-align: initial;
     position: relative;
     margin-left: 20%;
 }
 
 #index {
-    background-image: url("/images/carocuisine.jpg");
+    background-image: url("/images/carocuisine.jpg");/**/
     background-size: cover;
-    height: 80vh;
+    height: 70vh;
     width: 55%;
-    /* margin-top: -21px; */
-    margin: auto;
+    margin: 3% auto;
 }
 
-.table-inverse
-{
+.table-inverse {
     background-color:
 }
 
-body
-{
-    /*width:95%;
-    margin: auto;*/
-    margin: 0 2.5%;
-}
-
-.table
-{
+.table {
     background-color: #B5DDFF;
     margin-top: 20px;
 }
-.table-bordered > thead > tr > td, .table-bordered > thead > tr > th
-{
+
+.table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
    background-color: #0089FF;
 }
 
 .proch-din {
     position: relative;
-    top: 65%;
+    top: 42vh;
     margin: 0 3%;
     padding: 1%;
     height: 25vh;
