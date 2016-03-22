@@ -24,7 +24,7 @@ class platController extends Controller
 
         $plats = $em->getRepository('CaroGFaimBundle:plat')->findAll();
 
-        return $this->render('plat/index.html.twig', array(
+        return $this->render('CaroGFaimBundle:plat:index.html.twig', array(
             'plats' => $plats,
         ));
     }
@@ -47,7 +47,7 @@ class platController extends Controller
             return $this->redirectToRoute('plat_show', array('id' => $plat->getId()));
         }
 
-        return $this->render('plat/new.html.twig', array(
+        return $this->render('CaroGFaimBundle:plat:new.html.twig', array(
             'plat' => $plat,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class platController extends Controller
     {
         $deleteForm = $this->createDeleteForm($plat);
 
-        return $this->render('plat/show.html.twig', array(
+        return $this->render('CaroGFaimBundle:plat:show.html.twig', array(
             'plat' => $plat,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class platController extends Controller
             return $this->redirectToRoute('plat_edit', array('id' => $plat->getId()));
         }
 
-        return $this->render('plat/edit.html.twig', array(
+        return $this->render('CaroGFaimBundle:plat:edit.html.twig', array(
             'plat' => $plat,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

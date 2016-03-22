@@ -24,7 +24,7 @@ class type_platController extends Controller
 
         $type_plats = $em->getRepository('CaroGFaimBundle:type_plat')->findAll();
 
-        return $this->render('type_plat/index.html.twig', array(
+        return $this->render('CaroGFaimBundle:type_plat:index.html.twig', array(
             'type_plats' => $type_plats,
         ));
     }
@@ -47,7 +47,7 @@ class type_platController extends Controller
             return $this->redirectToRoute('type_plat_show', array('id' => $type_plat->getId()));
         }
 
-        return $this->render('type_plat/new.html.twig', array(
+        return $this->render('CaroGFaimBundle:type_plat:new.html.twig', array(
             'type_plat' => $type_plat,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class type_platController extends Controller
     {
         $deleteForm = $this->createDeleteForm($type_plat);
 
-        return $this->render('type_plat/show.html.twig', array(
+        return $this->render('CaroGFaimBundle:type_plat:show.html.twig', array(
             'type_plat' => $type_plat,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class type_platController extends Controller
             return $this->redirectToRoute('type_plat_edit', array('id' => $type_plat->getId()));
         }
 
-        return $this->render('type_plat/edit.html.twig', array(
+        return $this->render('CaroGFaimBundle:type_plat:edit.html.twig', array(
             'type_plat' => $type_plat,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
