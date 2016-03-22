@@ -1,0 +1,16 @@
+CaroGFaimBundle\Entity\type_plat:
+    type: entity
+    table: null
+    repositoryClass: CaroGFaimBundle\Repository\type_platRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+            unique: true
+    lifecycleCallbacks: {  }

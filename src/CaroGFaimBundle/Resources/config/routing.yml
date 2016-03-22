@@ -6,10 +6,6 @@ caro_g_faim_ingredient:
     resource: "@CaroGFaimBundle/Resources/config/routing/ingredient.yml"
     prefix:   /ingredient
 
-caro_g_faim_homepage:
-    path:     /
-    defaults: { _controller: CaroGFaimBundle:Default:index }
-
 caro_g_faim_personne:
     resource: "@CaroGFaimBundle/Resources/config/routing/personne.yml"
     prefix:   /personne
@@ -17,3 +13,17 @@ caro_g_faim_personne:
 caro_g_faim_diner:
     resource: "@CaroGFaimBundle/Resources/config/routing/diner.yml"
     prefix:   /diner
+
+caro_g_faim_plat:
+    resource: "@CaroGFaimBundle/Resources/config/routing/plat.yml"
+    prefix:   /plat
+
+caro_g_faim_type_plat:
+    resource: "@CaroGFaimBundle/Resources/config/routing/type_plat.yml"
+    prefix:   /type_plat
+
+caro_g_faim_homepage:
+    path:     /
+    defaults: { _controller: CaroGFaimBundle:Default:index }
+
+
