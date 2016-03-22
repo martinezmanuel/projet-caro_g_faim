@@ -1,43 +1,39 @@
-.navbar-inverse
-{
+.navbar-inverse {
     background-image: linear-gradient(to bottom,#e6c618 0,#E7EC1A 100%);
     color: #222222;
 }
 
-.navbar-inverse .navbar-nav > li > a
-{
+.navbar-inverse .navbar-nav > li > a {
     color: black;
 }
 
-.navbar-brand
-{
+.navbar-brand {
     font-size: 26px;
 }
 
-.navbar-inverse .navbar-brand
-{
+.navbar-inverse .navbar-brand {
     color: black;
 }
 
-.navbar
-{
+.navbar {
     border-radius: 0px;
 }
 
-.bandeau
-{   vertical-align: none;
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color:#72b00b;
+}
+
+.bandeau {
+    vertical-align: none;
     position: relative;
     margin-left: 20%;
 }
 
-#index
-{
+#index {
     background-image: url("/images/carocuisine.jpg");
     background-size: cover;
-    height: 100vh;
-    margin-top: -21px;
-}
-.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover
-{
-    color:#72b00b;
+    height: 80vh;
+    width: 55%;
+    /* margin-top: -21px; */
+    margin: auto;
 }
