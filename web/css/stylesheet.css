@@ -22,6 +22,7 @@
 .navbar
 {
     border-radius: 0px;
+    margin: 0 -35px;
 }
 
 .bandeau
@@ -35,9 +36,28 @@
     background-image: url("/images/carocuisine.jpg");
     background-size: cover;
     height: 100vh;
-    margin-top: -21px;
+    margin: -21px -35px 0 -35px;
 }
 .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover
 {
     color:#72b00b;
+}
+.table-inverse
+{
+    background-color:
+}
+body
+{
+    /*width:95%;
+    margin: auto;*/
+    margin: 0 2.5%;
+}
+.table
+{
+    background-color: #B5DDFF;
+    margin-top: 20px;
+}
+.table-bordered > thead > tr > td, .table-bordered > thead > tr > th
+{
+   background-color: #0089FF;
 }

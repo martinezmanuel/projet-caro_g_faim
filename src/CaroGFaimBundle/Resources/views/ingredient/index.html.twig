@@ -2,8 +2,11 @@
 
 {% block body %}
     <h1>Liste d'ingrédients</h1>
+    <li>
+        <a href="{{ path('ingredient_new') }}">Ajouter un ingrédient</a>
+    </li>
 
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Libellé</th>
@@ -13,6 +16,7 @@
         </thead>
         <tbody>
         {% for ingredient in ingredients %}
+
             <tr>
                 <td>{{ ingredient.libelle }}</td>
                 <td>{{ ingredient.categorie }}</td>
@@ -32,11 +36,8 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+      </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('ingredient_new') }}">Ajouter un ingrédient</a>
-        </li>
+     <ul>
     </ul>
 {% endblock %}
