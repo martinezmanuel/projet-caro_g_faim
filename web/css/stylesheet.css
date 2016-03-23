@@ -40,25 +40,16 @@
     margin: 3% auto;
 }
 
-.table-inverse {
-    background-color:
-}
-
-.table {
-    background-color: #B5DDFF;
-    margin-top: 20px;
-}
-
-.table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
-   background-color: #0089FF;
-}
-
 .proch-din {
     position: relative;
     top: 42vh;
     margin: 0 3%;
     padding: 1%;
     height: 25vh;
-    background-color: white;
-    opacity: 0.65;
+    background-color: rgba(255,255,255,0.65);
+}
+
+button.marg {
+    margin: 0;
+    margin-bottom: 1em;
 }

@@ -3,11 +3,9 @@
 {% block body %}
     <h1>Mes amis</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('personne_new') }}">Ajouter un(e) nouvel(le) ami(e)</a>
-        </li>
-    </ul>
+    <button class="marg">
+        <a href="{{ path('personne_new') }}">Ajouter un(e) nouvel(le) ami(e)</a>
+    </button>
 
     <div class="column-list">
         {% for personne in personnes %}

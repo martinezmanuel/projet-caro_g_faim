@@ -2,42 +2,104 @@
 
 {% block body %}
     <h1>Liste d'ingrédients</h1>
-    <li>
-        <a href="{{ path('ingredient_new') }}">Ajouter un ingrédient</a>
-    </li>
+    <button class="marg">
+        <a href="{{ path('ingredient_new') }}">Ajouter un nouvel ingrédient</a>
+    </button>
 
-    <table class="table table-bordered">
-        <thead>
+    <div class="bloc-table">
+        <table class="table table-bordered">
+            <thead>
             <tr>
                 <th>Libellé</th>
                 <th>Catégorie</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for ingredient in ingredients %}
+            </thead>
+            <tbody>
+            {% for ingredient in ingredients %}
 
+                <tr>
+                    <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
+                    <td>{{ ingredient.categorie }}</td>
+                    <td>
+                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
+                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <td>{{ ingredient.libelle }}</td>
-                <td>{{ ingredient.categorie }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">Voir</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a>
-                        </li>
-                    </ul>
-                </td>
+                <th>Libellé</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
             </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+            {% for ingredient in ingredients %}
 
-     <ul>
-    </ul>
+                <tr>
+                    <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
+                    <td>{{ ingredient.categorie }}</td>
+                    <td>
+                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
+                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bloc-table">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Libellé</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ingredient in ingredients %}
+
+                <tr>
+                    <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
+                    <td>{{ ingredient.categorie }}</td>
+                    <td>
+                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
+                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Libellé</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ingredient in ingredients %}
+
+                <tr>
+                    <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
+                    <td>{{ ingredient.categorie }}</td>
+                    <td>
+                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
+                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 {% endblock %}
