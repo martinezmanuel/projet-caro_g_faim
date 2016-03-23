@@ -3,6 +3,7 @@
     /*background-color: red;*/
     width: 70%;
     /*height: 250px;*/
+    text-align: right;
     column-count: 3;
     column-gap: 5%;
     column-rule: solid 1px black;
@@ -22,7 +23,4 @@
 }
 .column-list button {
     margin: 0.2em 0.1em;
-}
-h1 {
-    text-align: center;
 }

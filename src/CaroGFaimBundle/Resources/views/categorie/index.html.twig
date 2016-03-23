@@ -3,7 +3,10 @@
 {% block body %}
     <h1>Liste de catégories d'ingrédients</h1>
 
-    <table>
+    <li>
+        <a href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie d'ingrédient</a>
+    </li>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Libellé</th>
@@ -37,8 +40,6 @@
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie d'ingrédient</a>
-        </li>
+
     </ul>
 {% endblock %}

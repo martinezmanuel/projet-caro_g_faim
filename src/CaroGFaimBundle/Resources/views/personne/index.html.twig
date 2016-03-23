@@ -9,7 +9,7 @@
         </li>
     </ul>
 
-    <div style="text-align: right" class="column-list">
+    <div class="column-list">
         {% for personne in personnes %}
             <span>
                 <a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.nom }} {{ personne.prenom }}</a>
