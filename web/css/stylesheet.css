@@ -53,3 +53,19 @@ button.marg {
     margin: 0;
     margin-bottom: 1em;
 }
+
+button a {
+    color: lightslategrey;
+}
+
+button a:hover {
+    color: forestgreen;
+}
+
+.column-list span>a {
+    color: forestgreen;
+}
+
+.column-list span>a:hover {
+    color: lightslategrey;
+}

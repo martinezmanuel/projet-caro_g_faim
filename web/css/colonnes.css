@@ -1,26 +1,25 @@
 .column-list {
     margin: auto;
-    /*background-color: red;*/
-    width: 70%;
-    /*height: 250px;*/
+    padding: 1em;
+    /*width: 70%;
+    height: 250px;*/
+    background-color: rgba(255,255,255,0.65);
     text-align: right;
-    column-count: 3;
+    column-count: 4;
     column-gap: 5%;
     column-rule: solid 1px black;
     column-width: 30%;
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -webkit-column-gap: 5%; /* Chrome, Safari, Opera */
-    -webkit-column-rule: solid 1px black; /* Chrome, Safari, Opera */
-    -webkit-column-width: 30%; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    -moz-column-gap: 5%; /* Firefox */
-    -moz-column-rule: solid 1px black; /* Firefox */
+    /* Chrome, Safari, Opera */
+    -webkit-column-count: 4;
+    -webkit-column-gap: 5%;
+    -webkit-column-rule: solid 1px black;
+    -webkit-column-width: 30%;
+    /* Firefox */
+    -moz-column-count: 4;
+    -moz-column-gap: 5%;
+    -moz-column-rule: solid 1px grey;
 }
-.column-list span:nth-child(odd) {
-}
-.column-list span:nth-child(even) {
 
-}
 .column-list button {
     margin: 0.2em 0.1em;
 }

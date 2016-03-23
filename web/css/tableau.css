@@ -9,6 +9,14 @@
     border: none;
 }
 
+.table.table-bordered td>a {
+    color: forestgreen;
+}
+
+.table.table-bordered td>a:hover {
+    color: lightslategrey;
+}
+
 .bloc-table table:first-child {
     margin-left: 0;
 }
