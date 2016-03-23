@@ -2,17 +2,18 @@
 
 {% block body %}
     <h1>Mes ingrédients</h1>
-    <button class="marg">
-        <a href="{{ path('ingredient_new') }}">Nouvel ingrédient</a>
-    </button>
+
+        <a href="{{ path('ingredient_new') }}"><button class="marg">Nouvel ingrédient</button></a>
+
 
     <div class="bloc-table">
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Libellé</th>
+                <th colspan="2">Catégorie</th>
+                <!-- <th>Libellé</th>
                 <th>Catégorie</th>
-                <th>Actions</th>
+                <th>Actions</th>-->
             </tr>
             </thead>
             <tbody>
@@ -20,10 +21,14 @@
 
                 <tr>
                     <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
-                    <td>{{ ingredient.categorie }}</td>
+                    <!-- <td>{{ ingredient.categorie }}</td> -->
                     <td>
-                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
-                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
+                        <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
+                            <button>modif.</button>
+                        </a>
+                        <a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">
+                            <button>suppr.</button>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
@@ -33,9 +38,10 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Libellé</th>
+                <th colspan="2">Catégorie</th>
+                <!-- <th>Libellé</th>
                 <th>Catégorie</th>
-                <th>Actions</th>
+                <th>Actions</th>-->
             </tr>
             </thead>
             <tbody>
@@ -43,35 +49,14 @@
 
                 <tr>
                     <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
-                    <td>{{ ingredient.categorie }}</td>
+                    <!-- <td>{{ ingredient.categorie }}</td> -->
                     <td>
-                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
-                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="bloc-table">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Libellé</th>
-                <th>Catégorie</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for ingredient in ingredients %}
-
-                <tr>
-                    <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
-                    <td>{{ ingredient.categorie }}</td>
-                    <td>
-                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
-                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
+                        <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
+                            <button>modif.</button>
+                        </a>
+                        <a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">
+                            <button>suppr.</button>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
@@ -81,9 +66,10 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Libellé</th>
+                <th colspan="2">Catégorie</th>
+                <!-- <th>Libellé</th>
                 <th>Catégorie</th>
-                <th>Actions</th>
+                <th>Actions</th>-->
             </tr>
             </thead>
             <tbody>
@@ -91,10 +77,14 @@
 
                 <tr>
                     <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
-                    <td>{{ ingredient.categorie }}</td>
+                    <!-- <td>{{ ingredient.categorie }}</td> -->
                     <td>
-                        <button><a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Modifier</button>
-                        <button><a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">Supprimer</a></button>
+                        <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
+                            <button>modif.</button>
+                        </a>
+                        <a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">
+                            <button>suppr.</button>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

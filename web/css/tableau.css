@@ -4,7 +4,7 @@
 }
 
 .table.table-bordered {
-    width: 48.75%;
+    width: 31.67%;
     margin: 0 auto 2.5% auto;
     border: none;
 }
@@ -30,8 +30,8 @@
 }
 
 .table.table-bordered tr td:last-child {
-    width: 30%;
-    text-align: center;
+    /*width: 30%;*/
+    text-align: right;
 }
 
 .table {
@@ -53,6 +53,3 @@
 .table-bordered>thead>tr>th {
     border: none;
 }
-
-
-

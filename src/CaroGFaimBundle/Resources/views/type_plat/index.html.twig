@@ -2,6 +2,11 @@
 
 {% block body %}
     <h1>type_plat list</h1>
+    <ul>
+        <li>
+            <a href="{{ path('type_plat_new') }}">Create a new entry</a>
+        </li>
+    </ul>
 
     <table>
         <thead>
@@ -31,9 +36,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('type_plat_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

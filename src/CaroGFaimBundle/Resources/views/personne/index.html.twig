@@ -2,10 +2,7 @@
 
 {% block body %}
     <h1>Mes amis</h1>
-
-    <button class="marg">
-        <a href="{{ path('personne_new') }}">Nouvel(le) ami(e)</a>
-    </button>
+       <a href="{{ path('personne_new') }}"><button class="marg">Nouvel(le) ami(e)</button></a>
 
     <div class="column-list">
         {% for personne in personnes %}
@@ -13,12 +10,13 @@
                 <a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.nom }} {{ personne.prenom }}</a>
             </span>
             <span>
-                 <button>
-                    <a href="{{ path('personne_edit', { 'id': personne.id }) }}">modif.</a>&nbsp;
-                </button>
-                <button>
-                    <a href="{{ path('personne_delete', { 'id': personne.id }) }}">suppr.</a>
-                </button>
+                <a href="{{ path('personne_edit', { 'id': personne.id }) }}">
+                    <button>modif.</button>
+                </a>
+                <a href="{{ path('personne_delete', { 'id': personne.id }) }}">
+                    <button>suppr.</button>
+                </a>
+
                 <br>
             </span>
         {% endfor %}

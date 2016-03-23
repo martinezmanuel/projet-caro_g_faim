@@ -2,6 +2,7 @@
 
 {% block body %}
     <h1>diner list</h1>
+        <a href="{{ path('diner_new') }}"><button class="marg">Nouveau dîner</button></a>
 
     <table>
         <thead>
@@ -33,9 +34,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('diner_new') }}">Créer un nouveau diner</a>
-        </li>
-    </ul>
 {% endblock %}
