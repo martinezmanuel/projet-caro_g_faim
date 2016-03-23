@@ -23,3 +23,26 @@
 .column-list button {
     margin: 0.2em 0.1em;
 }
+
+.column-list-ingred {
+    margin-bottom: 2em;
+    height: 70vh;
+     /*Chrome, Safari, Opera */
+    -webkit-column-count: 3;
+    -webkit-column-gap: 2.5vw;
+    /* Firefox */
+    -moz-column-count: 3;
+    -moz-column-gap: 2.5vw;
+
+    column-count: 3;
+    column-gap: 2.5vw;
+}
+
+.column-list-ingred button {
+    margin: 0.2em 0.1em;
+}
+
+.column-list-ingred table {
+    width:100% !important;
+    /*display:inline-block !important;*/
+}
