@@ -26,7 +26,7 @@
 
 .column-list-ingred {
     margin-bottom: 2em;
-    height: 70vh;
+    /*height: 70vh;*/
      /*Chrome, Safari, Opera */
     -webkit-column-count: 3;
     -webkit-column-gap: 2.5vw;
@@ -44,5 +44,5 @@
 
 .column-list-ingred table {
     width:100% !important;
-    /*display:inline-block !important;*/
+    display:inline-table /*!important*/;
 }

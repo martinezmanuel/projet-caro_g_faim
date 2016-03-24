@@ -1,28 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>personne</h1>
+    <h1>{{ personne.nom }} {{ personne.prenom }}</h1>
+    <form method="get" action="{{ path('personne_index') }}">
+        <button class="marg" type="submit">Retour à la liste</button>
+    </form>
+   <div class="show-table">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>N'aime pas</th>
 
-    <table>
+        </tr>
+        </thead>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ personne.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
+
+        <tr>
                 <td>{{ personne.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
                 <td>{{ personne.prenom }}</td>
-            </tr>
-            <tr>
-                <th>N'aime pas</th>
                 <td>
-                    {% if personne.ingredients.count > 0 %}
+                    {% if personne.exclureingredients.count > 0 %}
                         <ul>
-                            {% for ingredient in personne.ingredients %}
+                            {% for ingredient in personne.exclureingredients %}
                                 <li>{{ ingredient }}</li>
                             {% endfor %}
                         </ul>
@@ -31,20 +32,19 @@
                     {% endif %}
                 </td>
             </tr>
+            <tr>
+            <td colspan="3">
+                <form method="get" action="{{ path('personne_edit', { 'id': personne.id }) }}">
+                    <button type="submit">modif.</button>
+                </form>
+                <form method="delete" action="{{ path('personne_delete', { 'id': personne.id }) }}">
+                    <button type="submit">suppr.</button>
+                </form>
+
+            </td>
+            </tr>
         </tbody>
     </table>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('personne_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

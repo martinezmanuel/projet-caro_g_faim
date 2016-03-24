@@ -54,11 +54,11 @@ button.marg {
     margin-bottom: 1em;
 }
 
-a button {
+button {
     color: lightslategrey;
 }
 
-a:hover button {
+button:hover {
     color: forestgreen;
 }
 

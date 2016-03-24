@@ -2,7 +2,9 @@
 
 {% block body %}
     <h1>diner list</h1>
-        <a href="{{ path('diner_new') }}"><button class="marg">Nouveau dîner</button></a>
+    <form method="get" action="{{ path('diner_new') }}">
+        <button class="marg" type="submit">Nouveau dîner</button>
+    </form>
 
     <table>
         <thead>

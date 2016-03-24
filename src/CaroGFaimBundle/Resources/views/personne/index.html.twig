@@ -2,7 +2,9 @@
 
 {% block body %}
     <h1>Mes amis</h1>
-       <a href="{{ path('personne_new') }}"><button class="marg">Nouvel(le) ami(e)</button></a>
+    <form method="get" action="{{ path('personne_new') }}">
+        <button class="marg" type="submit">Nouvel(le) ami(e)</button>
+    </form>
 
     <div class="column-list">
         {% for personne in personnes %}

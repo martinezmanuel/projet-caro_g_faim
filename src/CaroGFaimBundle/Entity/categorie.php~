@@ -39,10 +39,20 @@ class categorie
         $this->ingredients = new ArrayCollection();
     }
 
+    /*
+     * Get libelle when calling object directly
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -65,19 +75,9 @@ class categorie
     /**
      * Get libelle
      *
-     * @return string 
-     */
-    public function getLibelle()
-    {
-        return $this->libelle;
-    }
-
-    /*
-     * Get libelle when calling object directly
-     *
      * @return string
      */
-    public function __toString()
+    public function getLibelle()
     {
         return $this->libelle;
     }
@@ -108,7 +108,7 @@ class categorie
     /**
      * Get ingredients
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIngredients()
     {

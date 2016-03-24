@@ -4,8 +4,9 @@
 }
 
 .table.table-bordered {
-    width: 31.67%;
-    margin: 0 auto 2.5% auto;
+    width: 40%;
+    /*margin: 0 auto 2.5% auto;*/
+    margin: inherit;
     border: none;
 }
 
@@ -52,4 +53,18 @@
 .table-bordered>thead>tr>td,
 .table-bordered>thead>tr>th {
     border: none;
+}
+
+.show-table {
+    margin: auto;
+    width: 100%;
+}
+
+
+.show-table .table.table-bordered tr td:last-child li {
+    list-style: none;
+    text-align: left;
+}
+.show-table .table.table-bordered tr td:last-child ul {
+    padding: 0;
 }

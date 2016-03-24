@@ -2,18 +2,18 @@
 
 namespace CaroGFaimBundle\Entity;
 
+
+use CaroGFaimBundle\Entity\type_plat;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * categorie
+ * plat
  *
- * @UniqueEntity(fields="libelle", message="Cette catégorie existe déjà.")
+ * @UniqueEntity(fields="libelle", message="Ce plat existe déjà.")
  */
-
-
-class categorie
+class plat
 {
     /**
      * @var int
@@ -26,27 +26,33 @@ class categorie
     private $libelle;
 
     /**
+     * @var int
+     */
+    private $note;
+
+    /**
+     * @var string
+     */
+    private $annotations;
+
+    /**
+     * @var CaroGFaimBundle\Entity\type_plat
+     */
+    private $type_plat;
+
+    /**
      * @var ArrayCollection
      */
     private $ingredients;
 
 
     /**
-     * Constructor
+     * constructor
      */
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
-    }
-
-    /*
-     * Get libelle when calling object directly
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->libelle;
+        $this->annotations = '';
     }
 
     /**
@@ -63,7 +69,7 @@ class categorie
      * Set libelle
      *
      * @param string $libelle
-     * @return categorie
+     * @return plat
      */
     public function setLibelle($libelle)
     {
@@ -83,10 +89,79 @@ class categorie
     }
 
     /**
+     * Set note
+     *
+     * @param integer $note
+     * @return plat
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set annotations
+     *
+     * @param string $annotations
+     * @return plat
+     */
+    public function setAnnotations($annotations)
+    {
+        $this->annotations = $annotations;
+
+        return $this;
+    }
+
+    /**
+     * Get annotations
+     *
+     * @return string
+     */
+    public function getAnnotations()
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * Set type_plat
+     *
+     * @param \CaroGFaimBundle\Entity\type_plat $typePlat
+     * @return plat
+     */
+    public function setTypePlat(\CaroGFaimBundle\Entity\type_plat $typePlat)
+    {
+        $this->type_plat = $typePlat;
+
+        return $this;
+    }
+
+    /**
+     * Get type_plat
+     *
+     * @return \CaroGFaimBundle\Entity\type_plat
+     */
+    public function getTypePlat()
+    {
+        return $this->type_plat;
+    }
+
+    /**
      * Add ingredients
      *
      * @param \CaroGFaimBundle\Entity\ingredient $ingredients
-     * @return categorie
+     * @return plat
      */
     public function addIngredient(\CaroGFaimBundle\Entity\ingredient $ingredients)
     {

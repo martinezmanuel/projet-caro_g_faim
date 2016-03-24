@@ -7,13 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * categorie
+ * type_plat
  *
- * @UniqueEntity(fields="libelle", message="Cette catégorie existe déjà.")
+ * @UniqueEntity(fields="libelle", message="Ce type de plat existe déjà.")
  */
-
-
-class categorie
+class type_plat
 {
     /**
      * @var int
@@ -28,7 +26,7 @@ class categorie
     /**
      * @var ArrayCollection
      */
-    private $ingredients;
+    private $plats;
 
 
     /**
@@ -36,12 +34,11 @@ class categorie
      */
     public function __construct()
     {
-        $this->ingredients = new ArrayCollection();
+        $this->plats = new ArrayCollection();
     }
 
-    /*
-     * Get libelle when calling object directly
-     *
+    /**
+     * get libelle
      * @return string
      */
     public function __toString()
@@ -63,7 +60,7 @@ class categorie
      * Set libelle
      *
      * @param string $libelle
-     * @return categorie
+     * @return type_plat
      */
     public function setLibelle($libelle)
     {
@@ -83,35 +80,35 @@ class categorie
     }
 
     /**
-     * Add ingredients
+     * Add plats
      *
-     * @param \CaroGFaimBundle\Entity\ingredient $ingredients
-     * @return categorie
+     * @param \CaroGFaimBundle\Entity\plat $plats
+     * @return type_plat
      */
-    public function addIngredient(\CaroGFaimBundle\Entity\ingredient $ingredients)
+    public function addPlat(\CaroGFaimBundle\Entity\plat $plats)
     {
-        $this->ingredients[] = $ingredients;
+        $this->plats[] = $plats;
 
         return $this;
     }
 
     /**
-     * Remove ingredients
+     * Remove plats
      *
-     * @param \CaroGFaimBundle\Entity\ingredient $ingredients
+     * @param \CaroGFaimBundle\Entity\plat $plats
      */
-    public function removeIngredient(\CaroGFaimBundle\Entity\ingredient $ingredients)
+    public function removePlat(\CaroGFaimBundle\Entity\plat $plats)
     {
-        $this->ingredients->removeElement($ingredients);
+        $this->plats->removeElement($plats);
     }
 
     /**
-     * Get ingredients
+     * Get plats
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIngredients()
+    public function getPlats()
     {
-        return $this->ingredients;
+        return $this->plats;
     }
 }

@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>type_plat list</h1>
-    <ul>
-        <li>
-            <a href="{{ path('type_plat_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <h1>Type de plats</h1>
+    <form method="get" action="{{ path('type_plat_new') }}">
+        <button class="marg" type="submit">Nouveau type de plat</button>
+    </form>
 
     <table>
         <thead>
