@@ -16,7 +16,7 @@ CaroGFaimBundle\Entity\personne:
             type: string
             length: 255
     manyToMany:
-        ingredients:
+        exclure_ingredients:
             targetEntity: ingredient
             joinTable:
                 name: ne_pas_manger

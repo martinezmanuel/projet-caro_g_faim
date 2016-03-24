@@ -15,12 +15,12 @@ class personneType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('ingredients')
+            ->add('nom', null, array('label'=>'Nom : '))
+            ->add('prenom', null, array('label'=>'Prénom : '))
+            ->add('exclure_ingredients', null, array('label'=>"N'aime pas : "))
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

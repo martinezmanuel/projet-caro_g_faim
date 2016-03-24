@@ -16,6 +16,25 @@ CaroGFaimBundle\Entity\plat:
         note:
             type: integer
         annotations:
-            type: string
-            length: 255
+            type: text
+            nullable: true
+    manyToOne:
+        type_plat:
+            targetEntity: type_plat
+            inversedBy: plats
+            joinColumn:
+                name: fid_type_plat
+                referencedColumn: id
+                nullable: false
+    manyToMany:
+        ingredients:
+            targetEntity: ingredient
+            joinTable:
+                name: contenir
+                joinColumns:
+                    fid_plat:
+                        referenceColumnName: id
+                inverseJoinColumns:
+                    fid_ingredient:
+                        referenceColumnName: id
     lifecycleCallbacks: {  }

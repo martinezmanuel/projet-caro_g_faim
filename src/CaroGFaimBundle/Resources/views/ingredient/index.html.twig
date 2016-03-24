@@ -24,12 +24,12 @@
                     <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
                     <!-- <td>{{ ingredient.categorie }}</td> -->
                     <td>
-                        <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
-                            <button>modif.</button>
-                        </a>
-                        <a href="{{ path('ingredient_delete', { 'id': ingredient.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">
-                            <button>suppr.</button>
-                        </a>
+                        <form method="get" action="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
+                            <button type="submit"> modif. </button>
+                        </form>
+                        <form method="delete" action="{{ path('ingredient_delete', { 'id': ingredient.id }) }}">
+                            <button type="submit"> suppr. </button>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}

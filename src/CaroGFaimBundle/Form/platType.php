@@ -4,6 +4,7 @@ namespace CaroGFaimBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class platType extends AbstractType
@@ -15,12 +16,15 @@ class platType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
-            ->add('note')
-            ->add('annotations')
+            ->add('libelle', null, array('label'=>'Nom du plat : '))
+            ->add('type_plat', null, array('label'=>'Type : '))
+            ->add('ingredients', null, array('label'=>'Ingrédients : '))
+            ->add('note', null, array('label'=>'Attribuer une note :', 'data'=>'0', 'attr' => array('min'=>'0', 'max'=>'5')))
+            ->add('annotations', null, array('required' => false, 'data'=>'', 'label'=> 'Annotations : '))
+            ->add('save', SubmitType::class, array('label' => 'Enregistrer'))
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

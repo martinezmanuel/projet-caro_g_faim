@@ -13,4 +13,8 @@ CaroGFaimBundle\Entity\type_plat:
             type: string
             length: 255
             unique: true
+    oneToMany:
+        plats:
+            targetEntity: plat
+            mappedBy: type_plat
     lifecycleCallbacks: {  }

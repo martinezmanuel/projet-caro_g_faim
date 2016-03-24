@@ -22,14 +22,12 @@
                 <td>{{ plat.note }}</td>
                 <td>{{ plat.annotations }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">Modifier</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Editer</a>
-                        </li>
-                    </ul>
+                    <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
+                        <button type="submit"> modif. </button>
+                    </form>
+                    <form method="delete" action="{{ path('plat_delete', { 'id': plat.id }) }}">
+                        <button type="submit"> suppr. </button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}
@@ -53,14 +51,12 @@
                 <td>{{ plat.note }}</td>
                 <td>{{ plat.annotations }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
+                        <button type="submit"> modif. </button>
+                    </form>
+                    <form method="delete" action="{{ path('plat_delete', { 'id': plat.id }) }}">
+                        <button type="submit"> suppr. </button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}
@@ -84,14 +80,12 @@
                 <td>{{ plat.note }}</td>
                 <td>{{ plat.annotations }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
+                        <button type="submit"> modif. </button>
+                    </form>
+                    <form method="delete" action="{{ path('plat_delete', { 'id': plat.id }) }}">
+                        <button type="submit"> suppr. </button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}

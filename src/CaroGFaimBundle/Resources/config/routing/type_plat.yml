@@ -21,4 +21,4 @@ type_plat_edit:
 type_plat_delete:
     path:     /{id}/delete
     defaults: { _controller: "CaroGFaimBundle:type_plat:delete" }
-    methods:  DELETE
+    methods:  [GET, DELETE]

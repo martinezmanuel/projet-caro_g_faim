@@ -16,23 +16,18 @@
         <tbody>
         {% for categorie in categories %}
             <tr>
-                <td>{{ categorie.libelle }}</td>
+                <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.libelle }}</a></td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">Voir</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Modifier</a>
-                        </li>
-                        <li>
-                            {% if categorie.ingredients.count %}
-                                supprimer
-                            {% else %}
-                                <a href="{{ path('categorie_delete', { 'id': categorie.id }) }}" onClick="javascript:return confirm('Confirmer la suppression ?');">supprimer</a>
-                            {% endif %}
-                        </li>
-                    </ul>
+                    <form method="get" action="{{ path('categorie_edit', { 'id': categorie.id }) }}">
+                        <button type="submit"> modif. </button>
+                    </form>
+                    {% if categorie.ingredients.count %}
+                        supprimer
+                    {% else %}
+                        <form method="delete" action="{{ path('categorie_delete', { 'id': categorie.id }) }}">
+                            <button type="submit"> suppr. </button>
+                        </form>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

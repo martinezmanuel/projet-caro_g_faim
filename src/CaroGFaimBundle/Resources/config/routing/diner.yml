@@ -21,4 +21,4 @@ diner_edit:
 diner_delete:
     path:     /{id}/delete
     defaults: { _controller: "CaroGFaimBundle:diner:delete" }
-    methods:  DELETE
+    methods:  [GET, DELETE]

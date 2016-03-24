@@ -82,7 +82,7 @@ class personneController extends Controller
             $em->persist($personne);
             $em->flush();
 
-            return $this->redirectToRoute('personne_edit', array('id' => $personne->getId()));
+            return $this->redirectToRoute('personne_show', array('id' => $personne->getId()));
         }
 
         return $this->render('CaroGFaimBundle:personne:edit.html.twig', array(
@@ -98,11 +98,15 @@ class personneController extends Controller
      */
     public function deleteAction(Request $request, personne $personne)
     {
+        //$form = $this->createDeleteForm($personne);
+        //$form->handleRequest($request);
 
+        //if ($form->isSubmitted() && $form->isValid())
+        {
             $em = $this->getDoctrine()->getManager();
             $em->remove($personne);
             $em->flush();
-
+        }
 
         return $this->redirectToRoute('personne_index');
     }

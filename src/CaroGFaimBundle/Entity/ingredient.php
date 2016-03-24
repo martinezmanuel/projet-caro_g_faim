@@ -24,14 +24,19 @@ class ingredient
     private $libelle;
 
     /**
-     * @var int
+     * @var \CaroGFaimBundle\Entity\categorie
      */
-    private $fid_categorie;
+    private $categorie;
 
     /**
      * @var ArrayCollection
      */
     private $personnes;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $plats;
 
     /**
      * constructor
@@ -42,7 +47,9 @@ class ingredient
     }
 
     /**
-     * return label
+     * get libelle
+     *
+     * @return string
      */
     public function __toString()
     {
@@ -53,7 +60,7 @@ class ingredient
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,16 +83,12 @@ class ingredient
     /**
      * Get libelle
      *
-     * @return string 
+     * @return string
      */
     public function getLibelle()
     {
         return $this->libelle;
     }
-    /**
-     * @var \CaroGFaimBundle\Entity\categorie
-     */
-    private $categorie;
 
 
     /**
@@ -104,7 +107,7 @@ class ingredient
     /**
      * Get categorie
      *
-     * @return \CaroGFaimBundle\Entity\categorie 
+     * @return \CaroGFaimBundle\Entity\categorie
      */
     public function getCategorie()
     {
@@ -137,10 +140,43 @@ class ingredient
     /**
      * Get personnes
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPersonnes()
     {
         return $this->personnes;
+    }
+
+    /**
+     * Add plats
+     *
+     * @param \CaroGFaimBundle\Entity\plat $plats
+     * @return ingredient
+     */
+    public function addPlat(\CaroGFaimBundle\Entity\plat $plats)
+    {
+        $this->plats[] = $plats;
+
+        return $this;
+    }
+
+    /**
+     * Remove plats
+     *
+     * @param \CaroGFaimBundle\Entity\plat $plats
+     */
+    public function removePlat(\CaroGFaimBundle\Entity\plat $plats)
+    {
+        $this->plats->removeElement($plats);
+    }
+
+    /**
+     * Get plats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlats()
+    {
+        return $this->plats;
     }
 }

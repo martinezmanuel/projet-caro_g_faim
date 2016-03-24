@@ -14,16 +14,6 @@ use CaroGFaimBundle\Form\ingredientType;
  */
 class ingredientController extends Controller
 {
-    /*
-    * @var string
-    */
-    private $path_views;
-
-    public function __construct()
-    {
-        $this->path_views = 'CaroGFaimBundle:ingredient:';
-    }
-
     /**
      * Lists all ingredient entities.
      *
@@ -35,7 +25,7 @@ class ingredientController extends Controller
         $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
         //$ingredients = $em->getRepository('CaroGFaimBundle:ingredient')->findAll();
 
-        return $this->render("{$this->path_views}index.html.twig", array(
+        return $this->render("CaroGFaimBundle:ingredient:index.html.twig", array(
             'categories' => $categories,
             //'ingredients' => $ingredients,
         ));
@@ -59,7 +49,7 @@ class ingredientController extends Controller
             return $this->redirectToRoute('ingredient_show', array('id' => $ingredient->getId()));
         }
 
-        return $this->render("{$this->path_views}new.html.twig", array(
+        return $this->render("CaroGFaimBundle:ingredient:new.html.twig", array(
             'ingredient' => $ingredient,
             'form' => $form->createView(),
         ));
@@ -73,7 +63,7 @@ class ingredientController extends Controller
     {
         $deleteForm = $this->createDeleteForm($ingredient);
 
-        return $this->render("{$this->path_views}show.html.twig", array(
+        return $this->render("CaroGFaimBundle:ingredient:show.html.twig", array(
             'ingredient' => $ingredient,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -97,7 +87,7 @@ class ingredientController extends Controller
             return $this->redirectToRoute('ingredient_show', array('id' => $ingredient->getId()));
         }
 
-        return $this->render("{$this->path_views}edit.html.twig", array(
+        return $this->render("CaroGFaimBundle:ingredient:edit.html.twig", array(
             'ingredient' => $ingredient,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -110,6 +100,10 @@ class ingredientController extends Controller
      */
     public function deleteAction(Request $request, ingredient $ingredient)
     {
+        //$form = $this->createDeleteForm($ingredient);
+        //$form->handleRequest($request);
+
+       // if ($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($ingredient);

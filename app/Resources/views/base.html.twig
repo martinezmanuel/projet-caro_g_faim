@@ -7,6 +7,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <script
+                src="https://code.jquery.com/jquery-1.12.2.min.js"
+                integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="
+                crossorigin="anonymous"
+        ></script>
 
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}" type="text/css" >
@@ -15,9 +20,12 @@
             <link rel="stylesheet" href="{{ asset('css/tableau.css') }}" type="text/css" >
         {% endblock %}
 
-
-
-    </head>
+        <style>
+            form[method=get], form[method=delete] {
+                display:inline; !important
+            }
+        </style>
+</head>
 
 
 
@@ -53,6 +61,7 @@
 
 
 {%  endblock %}
+<script src="/js/confirm_delete.js"></script>
 </body>
 </html>
 

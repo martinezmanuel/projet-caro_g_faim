@@ -15,7 +15,7 @@ class categorieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
+            ->add('libelle', null, array('label'=> 'Libellé : '))
         ;
     }
     

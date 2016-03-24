@@ -82,7 +82,7 @@ class platController extends Controller
             $em->persist($plat);
             $em->flush();
 
-            return $this->redirectToRoute('plat_edit', array('id' => $plat->getId()));
+            return $this->redirectToRoute('plat_show', array('id' => $plat->getId()));
         }
 
         return $this->render('CaroGFaimBundle:plat:edit.html.twig', array(
@@ -98,10 +98,11 @@ class platController extends Controller
      */
     public function deleteAction(Request $request, plat $plat)
     {
-        $form = $this->createDeleteForm($plat);
-        $form->handleRequest($request);
+        //$form = $this->createDeleteForm($plat);
+        //$form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        //if ($form->isSubmitted() && $form->isValid())
+        {
             $em = $this->getDoctrine()->getManager();
             $em->remove($plat);
             $em->flush();
