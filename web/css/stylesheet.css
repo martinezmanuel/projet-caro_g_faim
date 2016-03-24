@@ -54,6 +54,15 @@ button.marg {
     margin-bottom: 1em;
 }
 
+button.button-no-click {
+    border-color: rgba(0,0,0,0);
+    color: darkgrey;
+    cursor: auto;
+}
+button.button-no-click:hover {
+    color: darkgrey;
+}
+
 button {
     color: lightslategrey;
 }
@@ -68,4 +77,8 @@ button:hover {
 
 .column-list span>a:hover {
     color: lightslategrey;
+}
+
+.list-form select[multiple] {
+    height: 100vh;
 }

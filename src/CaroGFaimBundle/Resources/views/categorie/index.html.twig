@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste de catégories d'ingrédients</h1>
+    <h1>Liste des catégories d'ingrédients</h1>
+    <form method="get" action="{{ path('categorie_new') }}">
+        <button class="marg" type="submit">Nouvelle catégorie d'ingrédients</button>
+    </form>
 
-    <li>
-        <a href="{{ path('categorie_new') }}">Ajouter une nouvelle catégorie d'ingrédient</a>
-    </li>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -22,7 +22,9 @@
                         <button type="submit"> modif. </button>
                     </form>
                     {% if categorie.ingredients.count %}
-                        supprimer
+                        <form method="get">
+                            <button class="button-no-click"> suppr. </button>
+                        </form>
                     {% else %}
                         <form method="delete" action="{{ path('categorie_delete', { 'id': categorie.id }) }}">
                             <button type="submit"> suppr. </button>
