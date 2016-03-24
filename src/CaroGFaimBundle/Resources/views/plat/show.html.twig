@@ -2,6 +2,13 @@
 
 {% block body %}
     <h1>plat</h1>
+    <form method="get" action="{{ path('plat_new') }}">
+        <button class="marg" type="submit">Nouveau plat</button>
+    </form>
+    <form method="get" action="{{ path('plat_index') }}">
+        <button class="marg" type="submit">Retour à la liste</button>
+    </form>
+
 
     <table>
         <tbody>
@@ -25,9 +32,6 @@
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('plat_index') }}">Retour à la liste</a>
-        </li>
         <li>
             <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Editer</a>
         </li>

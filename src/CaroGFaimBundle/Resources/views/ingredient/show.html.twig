@@ -2,6 +2,12 @@
 
 {% block body %}
     <h1>ingredient</h1>
+    <form method="get" action="{{ path('ingredient_new') }}">
+        <button class="marg" type="submit">Nouvel ingrédient</button>
+    </form>
+    <form method="get" action="{{ path('ingredient_index') }}">
+        <button class="marg" type="submit">Retour à la liste</button>
+    </form>
 
     <ul>
         <li>
