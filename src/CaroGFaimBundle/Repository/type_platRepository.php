@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class type_platRepository extends EntityRepository
 {
+    /**
+     * Finds all entities in the repository.
+     *
+     * @return array The entities.
+     */
+    public function findAll()
+    {
+        return $this->findBy(array(), array("id"=>"asc"));
+    }
+
 }

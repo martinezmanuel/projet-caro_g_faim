@@ -6,34 +6,35 @@
         <button class="marg" type="submit">Nouveau dîner</button>
     </form>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Datediner</th>
-                <th>Effectué ?</th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for diner in diners %}
-            <tr>
-                <td>
-                    <a href="{{ path('diner_show', { 'id': diner.id }) }}">
-                    {% if diner.dateDiner %}{{ diner.dateDiner|date('d/m/Y à H:m') }}{% endif %}
-                    </a>
-                </td>
-                <td>{% if diner.estArchive %}Oui{% else %}Non{% endif %}</td>
-                <td>
-                    <form method="get" action="{{ path('diner_edit', { 'id': diner.id }) }}">
-                        <button type="submit"> modif. </button>
-                    </form>
-                    {{ form_start(delete_form, {'action': path('diner_delete', { 'id': diner.id }) }) }}
-                    <button type="submit"> suppr. </button>
-                    {{ form_end(delete_form) }}
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="show-table">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Date du dîner</th>
+                    <th colspan="2">a eu lieu</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for diner in diners %}
+                <tr>
+                    <td>
+                        <a href="{{ path('diner_show', { 'id': diner.id }) }}">
+                        {% if diner.dateDiner %}{{ diner.dateDiner|date('\\L\\e d/m/Y \\à H:i') }}{% endif %}
+                        </a>
+                    </td>
+                    <td>{% if diner.estArchive %}Oui{% else %}Non{% endif %}</td>
+                    <td>
+                        <form method="get" action="{{ path('diner_edit', { 'id': diner.id }) }}">
+                            <button type="submit"> modif. </button>
+                        </form>
+                        {{ form_start(delete_form, {'action': path('diner_delete', { 'id': diner.id }) }) }}
+                        <button type="submit"> suppr. </button>
+                        {{ form_end(delete_form) }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

@@ -5,17 +5,19 @@
 
     <div class="show-table">
     <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Type de plat</th>
+            <th>Note</th>
+            <th>Ingrédients</th>
+
+        </tr>
+        </thead>
+
         <tbody>
             <tr>
-                <th>Type de plat</th>
                 <td>{{ plat.typeplat }}</td>
-            </tr>
-            <tr>
-                <th>Note</th>
                 <td>{{ plat.note }}</td>
-            </tr>
-            <tr>
-                <th>Ingrédients : </th>
                 <td>
                     {% if plat.ingredients.count %}
                         <ul>
@@ -30,7 +32,7 @@
             </tr>
             <tr>
                 <th>Annotations : </th>
-                <td>{{ plat.annotations }}</td>
+                <td colspan="2" style="text-align: left">{{ plat.annotations }}</td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -38,6 +40,23 @@
                         <button class="marg" type="submit">Retour à la liste</button>
                     </form>
                 </td>
+                <td>
+                    <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
+                        <button type="submit"> modif. </button>
+                    </form>
+                    {#
+                    {% if plat.diners.count %}
+                        <button class="button-no-click" disabled="disabled"> suppr. </button>
+                    {% else %}
+                    #}
+                    {{ form_start(delete_form, {'action': path('plat_delete', { 'id': plat.id }) }) }}
+                    <button type="submit"> suppr. </button>
+                    {{ form_end(delete_form) }}
+                    {#
+                    {% endif %}
+                    #}
+                </td>
+
             </tr>
         </tbody>
     </table>

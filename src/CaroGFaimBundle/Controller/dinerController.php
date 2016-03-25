@@ -87,7 +87,7 @@ class dinerController extends Controller
             $em->persist($diner);
             $em->flush();
 
-            return $this->redirectToRoute('diner_edit', array('id' => $diner->getId()));
+            return $this->redirectToRoute('diner_show', array('id' => $diner->getId()));
         }
 
         return $this->render('CaroGFaimBundle:diner:edit.html.twig', array(
