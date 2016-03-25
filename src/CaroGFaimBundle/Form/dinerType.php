@@ -15,8 +15,8 @@ class dinerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDiner', 'datetime')
-            ->add('estArchive')
+            ->add('dateDiner', 'datetime', array('label' => 'Date du dîner'))
+            ->add('estArchive', null, array('label' => 'Dîner effectué ?'))
         ;
     }
     

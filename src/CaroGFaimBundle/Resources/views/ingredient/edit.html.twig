@@ -3,15 +3,12 @@
 {% block body %}
     <h1>Modifier un ingrédient</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('ingredient_index') }}">Retour</a>
-        </li>
-    </ul>
-
-    {{ form_start(edit_form) }}
+    <div class="center">
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <input type="submit" value="Enregistrer" />
+        <input type="button" value="Annuler" back_href="{{ path('ingredient_index') }}" />
+        {{ form_end(edit_form) }}
+    </div>
 
 {% endblock %}

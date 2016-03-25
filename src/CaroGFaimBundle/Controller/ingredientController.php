@@ -20,14 +20,17 @@ class ingredientController extends Controller
      */
     public function indexAction()
     {
+        $deleteForm = $this->createFormBuilder()
+            ->setMethod('DELETE')
+            ->getForm();
+
         $em = $this->getDoctrine()->getManager();
 
         $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
-        //$ingredients = $em->getRepository('CaroGFaimBundle:ingredient')->findAll();
 
         return $this->render("CaroGFaimBundle:ingredient:index.html.twig", array(
             'categories' => $categories,
-            //'ingredients' => $ingredients,
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -100,10 +103,10 @@ class ingredientController extends Controller
      */
     public function deleteAction(Request $request, ingredient $ingredient)
     {
-        //$form = $this->createDeleteForm($ingredient);
-        //$form->handleRequest($request);
+        $form = $this->createDeleteForm($ingredient);
+        $form->handleRequest($request);
 
-       // if ($form->isSubmitted() && $form->isValid())
+        //if ($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($ingredient);

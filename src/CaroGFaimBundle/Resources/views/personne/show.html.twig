@@ -2,9 +2,7 @@
 
 {% block body %}
     <h1>{{ personne.nom }} {{ personne.prenom }}</h1>
-    <form method="get" action="{{ path('personne_index') }}">
-        <button class="marg" type="submit">Retour à la liste</button>
-    </form>
+
    <div class="show-table">
     <table class="table table-bordered">
         <thead>
@@ -34,13 +32,9 @@
             </tr>
             <tr>
             <td colspan="3">
-                <form method="get" action="{{ path('personne_edit', { 'id': personne.id }) }}">
-                    <button type="submit">modif.</button>
+                <form method="get" action="{{ path('personne_index') }}">
+                    <button class="marg" type="submit">Retour à la liste</button>
                 </form>
-                <form method="delete" action="{{ path('personne_delete', { 'id': personne.id }) }}">
-                    <button type="submit">suppr.</button>
-                </form>
-
             </td>
             </tr>
         </tbody>

@@ -1,44 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>plat</h1>
-    <form method="get" action="{{ path('plat_new') }}">
-        <button class="marg" type="submit">Nouveau plat</button>
-    </form>
-    <form method="get" action="{{ path('plat_index') }}">
-        <button class="marg" type="submit">Retour à la liste</button>
-    </form>
+    <h1>{{ plat.libelle }}</h1>
 
-
-    <table>
+    <div class="show-table">
+    <table class="table table-bordered">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ plat.id }}</td>
-            </tr>
-            <tr>
-                <th>Libelle</th>
-                <td>{{ plat.libelle }}</td>
+                <th>Type de plat</th>
+                <td>{{ plat.typeplat }}</td>
             </tr>
             <tr>
                 <th>Note</th>
                 <td>{{ plat.note }}</td>
             </tr>
             <tr>
-                <th>Annotations</th>
+                <th>Ingrédients : </th>
+                <td>
+                    {% if plat.ingredients.count %}
+                        <ul>
+                        {% for ingredient in plat.ingredients %}
+                            <li>{{ ingredient.libelle }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        Aucun ingrédient.
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Annotations : </th>
                 <td>{{ plat.annotations }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <form method="get" action="{{ path('plat_index') }}">
+                        <button class="marg" type="submit">Retour à la liste</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Editer</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

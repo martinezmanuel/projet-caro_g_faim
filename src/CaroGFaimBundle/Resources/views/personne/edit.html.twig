@@ -1,18 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ personne.nom }} {{ personne.prenom }}</h1>
-    <form method="get" action="{{ path('personne_index') }}">
-        <button class="marg" type="submit">Retour à la liste</button>
-    </form>
+    <h1>Modifier un(e) ami(e)</h1>
 
-    {{ form_start(edit_form) }}
+
+    <div class="center">
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <form method="delete" action="{{ path('personne_delete', { 'id': personne.id }) }}">
-        <button type="submit">suppr.</button>
-    </form>
+        <input type="submit" value="Enregistrer" />
+        <input type="button" value="Annuler" back_href="{{ path('personne_index') }}" />
+        {{ form_end(edit_form) }}
+    </div>
 
 {% endblock %}

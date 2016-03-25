@@ -2,15 +2,18 @@
 
 {% block body %}
     <h1>Liste des catégories d'ingrédients</h1>
+
+    <div class="container-width">
     <form method="get" action="{{ path('categorie_new') }}">
         <button class="marg" type="submit">Nouvelle catégorie d'ingrédients</button>
     </form>
+    </div>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered container-width">
         <thead>
             <tr>
                 <th>Libellé</th>
-                <th>Actions</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -22,13 +25,11 @@
                         <button type="submit"> modif. </button>
                     </form>
                     {% if categorie.ingredients.count %}
-                        <form method="get">
-                            <button class="button-no-click"> suppr. </button>
-                        </form>
+                        <button class="button-no-click" disabled="disabled"> suppr. </button>
                     {% else %}
-                        <form method="delete" action="{{ path('categorie_delete', { 'id': categorie.id }) }}">
-                            <button type="submit"> suppr. </button>
-                        </form>
+                        {{ form_start(delete_form, {'action': path('categorie_delete', { 'id': categorie.id }) }) }}
+                        <button type="submit"> suppr. </button>
+                        {{ form_end(delete_form) }}
                     {% endif %}
                 </td>
             </tr>

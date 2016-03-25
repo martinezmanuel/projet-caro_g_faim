@@ -1,16 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>plat creation</h1>
+    <h1>Nouveau plat</h1>
 
+    <div class="center">
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Créer" />
+    {{ form_widget(form) }}
+    <input type="submit" value="Ajouter" />
+    <input type="button" value="Annuler" back_href="{{ path('plat_index') }}" />
     {{ form_end(form) }}
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('plat_index') }}">Retour à la liste</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -20,12 +20,19 @@ class platController extends Controller
      */
     public function indexAction()
     {
+        $deleteForm = $this->createFormBuilder()
+            ->setMethod('DELETE')
+            ->getForm();
+
         $em = $this->getDoctrine()->getManager();
 
         $plats = $em->getRepository('CaroGFaimBundle:plat')->findAll();
+        $type_plats = $em->getRepository('CaroGFaimBundle:type_plat')->findAll();
 
         return $this->render('CaroGFaimBundle:plat:index.html.twig', array(
-            'plats' => $plats,
+           // 'plats' => $plats,
+            'type_plats' => $type_plats,
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -98,8 +105,8 @@ class platController extends Controller
      */
     public function deleteAction(Request $request, plat $plat)
     {
-        //$form = $this->createDeleteForm($plat);
-        //$form->handleRequest($request);
+        $form = $this->createDeleteForm($plat);
+        $form->handleRequest($request);
 
         //if ($form->isSubmitted() && $form->isValid())
         {

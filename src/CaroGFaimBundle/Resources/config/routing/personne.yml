@@ -21,4 +21,4 @@ personne_edit:
 personne_delete:
     path:     /{id}/delete
     defaults: { _controller: "CaroGFaimBundle:personne:delete" }
-    methods:  [GET, DELETE]
+    methods:  DELETE

@@ -21,4 +21,4 @@ ingredient_edit:
 ingredient_delete:
     path:     /{id}/delete
     defaults: { _controller: "CaroGFaimBundle:ingredient:delete" }
-    methods:  [GET, DELETE]
+    methods:  DELETE

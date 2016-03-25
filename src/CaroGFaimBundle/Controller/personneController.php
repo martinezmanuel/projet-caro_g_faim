@@ -20,12 +20,17 @@ class personneController extends Controller
      */
     public function indexAction()
     {
+        $deleteForm = $this->createFormBuilder()
+            ->setMethod('DELETE')
+            ->getForm();
+
         $em = $this->getDoctrine()->getManager();
 
         $personnes = $em->getRepository('CaroGFaimBundle:personne')->findAll();
 
         return $this->render('CaroGFaimBundle:personne:index.html.twig', array(
             'personnes' => $personnes,
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -98,8 +103,8 @@ class personneController extends Controller
      */
     public function deleteAction(Request $request, personne $personne)
     {
-        //$form = $this->createDeleteForm($personne);
-        //$form->handleRequest($request);
+        $form = $this->createDeleteForm($personne);
+        $form->handleRequest($request);
 
         //if ($form->isSubmitted() && $form->isValid())
         {

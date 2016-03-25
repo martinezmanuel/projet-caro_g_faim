@@ -7,40 +7,45 @@
         <button class="marg" type="submit">Nouvel ingrédient</button>
     </form>
 
-
     <div class="column-list-ingred">
         {% for categorie in categories %}
+            {% if categorie.ingredients.count %}
 
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th colspan="2">{{ categorie.libelle }}</th>
-                <!-- <th>Libellé</th>
-                <th>Catégorie</th>
-                <th>Actions</th>-->
-            </tr>
-            </thead>
-            <tbody>
-            {% for ingredient in categorie.ingredients %}
-
+            <table class="table table-bordered">
+                <thead>
                 <tr>
-                    <td>
-                        <a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.libelle }}</a></td>
-                    <!-- <td>{{ ingredient.categorie }}</td> -->
-                    <td>
-                        <form method="get" action="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
-                            <button type="submit">modif.</button>
-                        </form>
-                        <form method="delete" action="{{ path('ingredient_delete', { 'id': ingredient.id }) }}">
-                            <button type="submit">suppr.</button>
-                        </form>
-                    </td>
+                    <th colspan="2">{{ categorie.libelle }}</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        {% endfor %}
+                </thead>
+                <tbody>
+                {% for ingredient in categorie.ingredients %}
 
+                    <tr>
+                        <td>
+                            {{ ingredient.libelle }}
+                        </td>
+                        <td>
+                            <form method="get" action="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
+                                <button type="submit"> modif. </button>
+                            </form>
+                            {#
+                            {% if ingredient.plats.count %}
+                                <button class="button-no-click" disabled="disabled"> suppr. </button>
+                            {% else %}
+                            #}
+                                {{ form_start(delete_form, {'action': path('ingredient_delete', { 'id': ingredient.id }) }) }}
+                                <button type="submit"> suppr. </button>
+                                {{ form_end(delete_form) }}
+                            {#
+                            {% endif %}
+                            #}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        {% endfor %}
     </div>
 
 {% endblock %}

@@ -21,7 +21,6 @@ class platType extends AbstractType
             ->add('ingredients', null, array('label'=>'Ingrédients : '))
             ->add('note', null, array('label'=>'Attribuer une note :', 'data'=>'0', 'attr' => array('min'=>'0', 'max'=>'5')))
             ->add('annotations', null, array('required' => false, 'data'=>'', 'label'=> 'Annotations : '))
-            ->add('save', SubmitType::class, array('label' => 'Enregistrer'))
         ;
     }
 

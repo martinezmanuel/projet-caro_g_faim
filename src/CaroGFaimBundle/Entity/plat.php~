@@ -52,7 +52,6 @@ class plat
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
-        $this->annotations = '';
     }
 
     /**
@@ -135,7 +134,7 @@ class plat
     }
 
     /**
-     * Set type_plat
+     * Set __type_plat
      *
      * @param \CaroGFaimBundle\Entity\type_plat $typePlat
      * @return plat
@@ -148,7 +147,7 @@ class plat
     }
 
     /**
-     * Get type_plat
+     * Get __type_plat
      *
      * @return \CaroGFaimBundle\Entity\type_plat
      */

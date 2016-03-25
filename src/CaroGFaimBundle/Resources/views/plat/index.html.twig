@@ -6,28 +6,42 @@
         <button class="marg" type="submit">Nouveau plat</button>
     </form>
     <div class="column-list-ingred">
-        {% for plat in plats %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th colspan="3">{{ plat.id }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a></td>
-                    <td>{{ plat.note }}</td>
-                    <td>
-                        <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
-                            <button type="submit"> modif. </button>
-                        </form>
-                        <form method="delete" action="{{ path('plat_delete', { 'id': plat.id }) }}">
+        {% for type_plat in type_plats %}
+            {% if type_plat.plats.count %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>{{ type_plat.libelle }}</th>
+                        <th colspan="2">Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plat in type_plat.plats %}
+                    <tr>
+                        <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a></td>
+                        <td>{{ plat.note }}</td>
+                        <td>
+                            <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
+                                <button type="submit"> modif. </button>
+                            </form>
+                            {#
+                            {% if plat.diners.count %}
+                                <button class="button-no-click" disabled="disabled"> suppr. </button>
+                            {% else %}
+                            #}
+                            {{ form_start(delete_form, {'action': path('plat_delete', { 'id': plat.id }) }) }}
                             <button type="submit"> suppr. </button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            {{ form_end(delete_form) }}
+                            {#
+                            {% endif %}
+                            #}
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

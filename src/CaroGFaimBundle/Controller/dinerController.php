@@ -20,12 +20,17 @@ class dinerController extends Controller
      */
     public function indexAction()
     {
+        $deleteForm = $this->createFormBuilder()
+            ->setMethod('DELETE')
+            ->getForm();
+
         $em = $this->getDoctrine()->getManager();
 
         $diners = $em->getRepository('CaroGFaimBundle:diner')->findAll();
 
         return $this->render('CaroGFaimBundle:diner:index.html.twig', array(
             'diners' => $diners,
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -101,7 +106,8 @@ class dinerController extends Controller
         $form = $this->createDeleteForm($diner);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        //if ($form->isSubmitted() && $form->isValid())
+        {
             $em = $this->getDoctrine()->getManager();
             $em->remove($diner);
             $em->flush();

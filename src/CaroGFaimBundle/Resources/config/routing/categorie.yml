@@ -21,4 +21,4 @@ categorie_edit:
 categorie_delete:
     path:     /{id}/delete
     defaults: { _controller: "CaroGFaimBundle:categorie:delete" }
-    methods:  [GET, DELETE]
+    methods:  DELETE

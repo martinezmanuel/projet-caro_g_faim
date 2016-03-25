@@ -20,12 +20,16 @@ class categorieController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->createFormBuilder()
+                                ->setMethod('DELETE')
+                                ->getForm();
 
+        $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
 
         return $this->render("CaroGFaimBundle:categorie:index.html.twig", array(
             'categories' => $categories,
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -73,6 +77,7 @@ class categorieController extends Controller
      */
     public function editAction(Request $request, categorie $categorie)
     {
+        $delete_form = $this->createDeleteForm($categorie);
         $editForm = $this->createForm('CaroGFaimBundle\Form\categorieType', $categorie);
         $editForm->handleRequest($request);
 
@@ -86,7 +91,8 @@ class categorieController extends Controller
 
         return $this->render("CaroGFaimBundle:categorie:edit.html.twig", array(
             'categorie' => $categorie,
-            'edit_form' => $editForm->createView()
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $delete_form->createView()
         ));
     }
 
@@ -96,10 +102,10 @@ class categorieController extends Controller
      */
     public function deleteAction(Request $request, categorie $categorie)
     {
-       // $form = $this->createDeleteForm($categorie);
-       // $form->handleRequest($request);
+        $form = $this->createDeleteForm($categorie);
+        $form->handleRequest($request);
 
-       // if ($form->isSubmitted() && $form->isValid())
+        //if ($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($categorie);
@@ -121,7 +127,6 @@ class categorieController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('categorie_delete', array('id' => $categorie->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

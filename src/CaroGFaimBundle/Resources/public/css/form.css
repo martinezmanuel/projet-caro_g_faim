@@ -1,0 +1,78 @@
+.center {
+    display:block;
+    padding:2em;
+    width:50%;
+    margin:0 auto;
+    margin-top:60px;
+    border:1px solid #666666;
+    border-radius: 0.2em;
+}
+.center form {
+    display:inline;
+}
+.center form label {
+    padding:0.5em;
+    width:12em;
+    vertical-align: top;
+}
+
+.center form input {
+    margin-top:0.5em;
+    padding:0.5em;
+    width:50%;
+}
+
+.center form input[type=submit] {
+    padding:0;
+    width:8em;
+    margin-top:3em;
+    margin-left:12em;
+}
+
+.center form input[type=button] {
+    padding:0;
+    width:8em;
+}
+
+.center form input[type=number] {
+    margin-top:0.5em;
+    padding:0.5em;
+    width:10%;
+}
+
+.center form select {
+    margin-top:0.5em;
+    padding:0.5em;
+}
+
+.center form select[multiple] {
+    margin-top:0.5em;
+    height:10em;
+    width:60%;
+}
+
+.center form textarea {
+    margin-top:0.5em;
+    height:10em;
+    width:60%;
+}
+
+.center form ul {
+    vertical-align: top;
+    display: inline;
+}
+.center form ul li {
+    list-style: none;
+    margin-left:0.5em;
+    color:red;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.show_center {
+    display:block;
+    padding:2em;
+    width:50%;
+    margin:0 auto;
+    margin-top:60px;
+}

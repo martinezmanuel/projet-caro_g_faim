@@ -36,7 +36,7 @@ class ingredient
     /**
      * @var ArrayCollection
      */
-    private $plats;
+    private $apparaitre_plats;
 
     /**
      * constructor
@@ -44,6 +44,7 @@ class ingredient
     public function __construct()
     {
         $this->personnes = new ArrayCollection();
+        $this->apparaitre_plats = new ArrayCollection();
     }
 
     /**
@@ -155,7 +156,7 @@ class ingredient
      */
     public function addPlat(\CaroGFaimBundle\Entity\plat $plats)
     {
-        $this->plats[] = $plats;
+        $this->apparaitre_plats[] = $plats;
 
         return $this;
     }
@@ -167,7 +168,7 @@ class ingredient
      */
     public function removePlat(\CaroGFaimBundle\Entity\plat $plats)
     {
-        $this->plats->removeElement($plats);
+        $this->apparaitre_plats->removeElement($plats);
     }
 
     /**
@@ -175,8 +176,8 @@ class ingredient
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPlats()
+    public function getApparaitrePlats()
     {
-        return $this->plats;
+        return $this->apparaitre_plats;
     }
 }

@@ -15,11 +15,18 @@
                 <form method="get" action="{{ path('personne_edit', { 'id': personne.id }) }}">
                     <button type="submit"> modif. </button>
                 </form>
-                <form method="delete" action="{{ path('personne_delete', { 'id': personne.id }) }}">
-                    <button type="submit"> suppr. </button>
-                </form>
-
-                <br>
+                {#
+                {% if personne.diners.count %}
+                    <button class="button-no-click" disabled="disabled"> suppr. </button>
+                {% else %}
+                #}
+                {{ form_start(delete_form, {'action': path('personne_delete', { 'id': personne.id }) }) }}
+                <button type="submit"> suppr. </button>
+                {{ form_end(delete_form) }}
+                {#
+                {% endif %}
+                #}
+                <br />
             </span>
         {% endfor %}
     </div>
