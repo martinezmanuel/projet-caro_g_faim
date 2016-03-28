@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class dinerRepository extends EntityRepository
 {
+    /**
+     * Finds all "diner" and order them by "date"
+     *
+     * @return array The entities.
+     */
+    public function findAll()
+    {
+        return $this->findBy(array(), array("dateDiner"=>"DESC"));
+    }
 }

@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
     <h1>Mes ingrédients</h1>
 
@@ -8,42 +7,44 @@
     </form>
 
     <div class="column-list-ingred">
+
         {% for categorie in categories %}
             {% if categorie.ingredients.count %}
 
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th colspan="2">{{ categorie.libelle }}</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for ingredient in categorie.ingredients %}
-
+                <table class="table table-bordered">
+                    <thead>
                     <tr>
-                        <td>
-                            {{ ingredient.libelle }}
-                        </td>
-                        <td>
-                            <form method="get" action="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
-                                <button type="submit"> modif. </button>
-                            </form>
-                            {#
-                            {% if ingredient.plats.count %}
-                                <button class="button-no-click" disabled="disabled"> suppr. </button>
-                            {% else %}
-                            #}
-                                {{ form_start(delete_form, {'action': path('ingredient_delete', { 'id': ingredient.id }) }) }}
-                                <button type="submit"> suppr. </button>
-                                {{ form_end(delete_form) }}
-                            {#
-                            {% endif %}
-                            #}
-                        </td>
+                        <th colspan="2">{{ categorie.libelle }}</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for ingredient in categorie.ingredients %}
+
+                        <tr>
+                            <td>
+                                {{ ingredient.libelle }}
+                            </td>
+                            <td>
+                                <form method="get" action="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">
+                                    <button type="submit"> modif. </button>
+                                </form>
+
+
+                                {% if ingredient.apparaitrePlats.count %}
+                                    <button class="button-no-click" disabled="disabled"> suppr. </button>
+                                {% else %}
+
+                                    {{ form_start(delete_form, {'action': path('ingredient_delete', { 'id': ingredient.id }) }) }}
+                                    <button type="submit"> suppr. </button>
+                                    {{ form_end(delete_form) }}
+
+                                {% endif %}
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             {% endif %}
         {% endfor %}
     </div>

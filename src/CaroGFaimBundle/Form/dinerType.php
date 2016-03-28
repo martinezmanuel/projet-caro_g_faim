@@ -17,9 +17,19 @@ class dinerType extends AbstractType
         $builder
             ->add('dateDiner', 'datetime', array('label' => 'Date du dîner'))
             ->add('estArchive', null, array('label' => 'Dîner effectué ?'))
-        ;
+            ->add('invites', null, array('label'=>"Invités : "));
+
+        $diner = $builder->getData();
+        /*
+                $type_plats = $diner->getPresenterTypePlats();
+
+                foreach($type_plats => $type_plat) {
+                 //   $builder->add($type_plat);
+
+                }
+        */
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

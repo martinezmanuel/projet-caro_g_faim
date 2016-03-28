@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class platRepository extends EntityRepository
 {
+    /**
+     * Finds all "plat" and order them by "libelle"
+     *
+     * @return array The entities.
+     */
+    public function findAll()
+    {
+        return $this->findBy(array(), array("libelle"=>"ASC"));
+    }
+
 }

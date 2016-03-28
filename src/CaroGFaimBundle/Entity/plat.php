@@ -45,6 +45,10 @@ class plat
      */
     private $ingredients;
 
+    /**
+     * @var CaroGFaimBundle\Entity\diner
+     */
+    private $diner;
 
     /**
      * constructor
@@ -187,5 +191,28 @@ class plat
     public function getIngredients()
     {
         return $this->ingredients;
+    }
+
+    /**
+     * Set diner
+     *
+     * @param \CaroGFaimBundle\Entity\diner $diner
+     * @return plat
+     */
+    public function setDiner(\CaroGFaimBundle\Entity\diner $diner = null)
+    {
+        $this->diner = $diner;
+
+        return $this;
+    }
+
+    /**
+     * Get diner
+     *
+     * @return \CaroGFaimBundle\Entity\diner
+     */
+    public function getDiner()
+    {
+        return $this->diner;
     }
 }

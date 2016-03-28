@@ -26,7 +26,7 @@ class ingredientController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
+        $categories = $em->getRepository('CaroGFaimBundle:ingredient')->findAllIngredientsByCategories();
 
         return $this->render("CaroGFaimBundle:ingredient:index.html.twig", array(
             'categories' => $categories,

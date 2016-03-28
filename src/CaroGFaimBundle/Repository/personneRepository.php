@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class personneRepository extends EntityRepository
 {
+    /**
+     * Finds all "personne" and order them by "nom", "prenom"
+     *
+     * @return array The entities.
+     */
+    public function findAll()
+    {
+        return $this->findBy(array(), array("nom"=>"ASC", "prenom"=>"ASC"));
+    }
+
 }

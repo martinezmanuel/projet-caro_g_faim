@@ -25,7 +25,6 @@ CaroGFaimBundle\Entity\ingredient:
         personnes:
             targetEntity: personne
             mappedBy: exclure_ingredients
-    manyToMany:
         apparaitre_plats:
             targetEntity: plat
             mappedBy: ingredients

@@ -154,7 +154,7 @@ class ingredient
      * @param \CaroGFaimBundle\Entity\plat $plats
      * @return ingredient
      */
-    public function addPlat(\CaroGFaimBundle\Entity\plat $plats)
+    public function addApparaitrePlat(\CaroGFaimBundle\Entity\plat $plats)
     {
         $this->apparaitre_plats[] = $plats;
 
@@ -166,7 +166,7 @@ class ingredient
      *
      * @param \CaroGFaimBundle\Entity\plat $plats
      */
-    public function removePlat(\CaroGFaimBundle\Entity\plat $plats)
+    public function removeApparaitrePlat(\CaroGFaimBundle\Entity\plat $plats)
     {
         $this->apparaitre_plats->removeElement($plats);
     }
