@@ -18,6 +18,10 @@ CaroGFaimBundle\Entity\plat:
         annotations:
             type: text
             nullable: true
+        photofilename:
+            type: string
+            length: 255
+            nullable: true
     manyToOne:
         type_plat:
             targetEntity: type_plat

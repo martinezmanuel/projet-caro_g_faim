@@ -37,7 +37,6 @@ class ingredientRepository extends EntityRepository
              FROM CaroGFaimBundle:categorie cat
              JOIN cat.ingredients ings
              LEFT JOIN ings.apparaitre_plats plats
-             GROUP BY cat, ings
              ORDER BY cat.libelle ASC, ings.libelle ASC"
         );
         $results = $query->getResult();

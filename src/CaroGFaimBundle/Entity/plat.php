@@ -7,6 +7,7 @@ use CaroGFaimBundle\Entity\type_plat;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * plat
@@ -34,6 +35,13 @@ class plat
      * @var string
      */
     private $annotations;
+
+    /**
+     * @var string
+     * @Assert\File(maxSize="1500k", mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Veuillez sélectionner une photo au format JPEG ou PNG")
+     */
+    private $photofilename;
 
     /**
      * @var CaroGFaimBundle\Entity\type_plat
@@ -138,7 +146,63 @@ class plat
     }
 
     /**
-     * Set __type_plat
+     * Set photo filename
+     *
+     * @param string $filename
+     * @return plat
+     */
+    public function setPhotofilename($filename)
+    {
+        $this->photofilename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get photo filename
+     *
+     * @return string
+     */
+    public function getPhotofilename()
+    {
+        return $this->photofilename;
+    }
+
+    /*
+     * @var string
+     */
+    private $path;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->photofilename
+            ? null
+            : $this->getUploadRootDir().'/'.$this->photofilename;
+    }
+
+    public function getWebPath()
+    {
+        return empty($this->photofilename)
+            ? null
+            : $this->getUploadDir().'/'.$this->photofilename;
+    }
+
+    public function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'bundles/carogfaim/upload';
+    }
+
+    /**
+     * Set type_plat
      *
      * @param \CaroGFaimBundle\Entity\type_plat $typePlat
      * @return plat
@@ -151,7 +215,7 @@ class plat
     }
 
     /**
-     * Get __type_plat
+     * Get type_plat
      *
      * @return \CaroGFaimBundle\Entity\type_plat
      */

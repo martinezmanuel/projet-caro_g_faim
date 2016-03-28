@@ -11,6 +11,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
+                        <th>&nbsp;</th>
                         <th style="width: 50%">{{ type_plat.libelle }}</th>
                         <th colspan="2">Note</th>
                     </tr>
@@ -18,23 +19,26 @@
                 <tbody>
                     {% for plat in type_plat.plats %}
                     <tr>
-                        <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a></td>
+                        <td>
+                            {%  if plat.webPath %}
+                                <div class="photo" style="background-image:url('{{ asset(plat.webPath) }}');"></div>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a>
+                        </td>
                         <td>{{ plat.note }}</td>
                         <td>
                             <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
                                 <button type="submit"> modif. </button>
                             </form>
-                            {#
-                            {% if plat.diners.count %}
+                            {% if plat.diner %}
                                 <button class="button-no-click" disabled="disabled"> suppr. </button>
                             {% else %}
-                            #}
                             {{ form_start(delete_form, {'action': path('plat_delete', { 'id': plat.id }) }) }}
                             <button type="submit"> suppr. </button>
                             {{ form_end(delete_form) }}
-                            {#
                             {% endif %}
-                            #}
                         </td>
                     </tr>
                     {% endfor %}

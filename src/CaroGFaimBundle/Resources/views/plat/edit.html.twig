@@ -4,6 +4,7 @@
     <h1>Modifier :<br>{{ plat.libelle }}</h1>
 
     <div class="center">
+        <div class="photo_edit" style="background-image:url('{{ asset(plat.webPath) }}');"></div>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Enregistrer" />
