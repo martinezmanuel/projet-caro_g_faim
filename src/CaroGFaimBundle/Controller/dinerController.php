@@ -4,6 +4,8 @@ namespace CaroGFaimBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use CaroGFaimBundle\Entity\diner;
 use CaroGFaimBundle\Form\dinerType;
@@ -43,7 +45,7 @@ class dinerController extends Controller
     {
         $diner = new diner();
         $form = $this->createForm('CaroGFaimBundle\Form\dinerType', $diner);
-        //$form = $this->updatePlatsForm($form, $diner);
+        $form = $this->updatePlatsForm($form, $diner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -156,7 +158,7 @@ class dinerController extends Controller
         //dump($type_plats);
         $i = 0;
         foreach($type_plats as $type_plat) {
-            $form->add("id_plat[$i]", ChoiceType::class, array('label' => $type_plat->getLibelle()));
+            $form->add("libelle", ChoiceType::class, array('label' => $type_plat->getLibelle()));
             $i++;
         }
 
