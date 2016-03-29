@@ -43,6 +43,7 @@ class dinerController extends Controller
     {
         $diner = new diner();
         $form = $this->createForm('CaroGFaimBundle\Form\dinerType', $diner);
+        //$form = $this->updatePlatsForm($form, $diner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -85,6 +86,7 @@ class dinerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($diner);
         $editForm = $this->createForm('CaroGFaimBundle\Form\dinerType', $diner);
+        //$editForm = $this->updatePlatsForm($editForm, $diner);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -135,5 +137,29 @@ class dinerController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     *
+     */
+    private function updatePlatsForm( Form $form, diner $diner)
+    {
+        $form->add('dateDiner', 'datetime', array('label' => 'Date du dîner'))
+            ->add('estArchive', null, array('label' => 'Dîner effectué ?'))
+            ->add('invites', null, array('label'=>"Invités : "));
+
+
+        $em = $this->getDoctrine()->getManager();
+        $type_plats = $em->getRepository("CaroGFaimBundle:type_plat")->findAll();
+        //$type_plats = $diner->getPresenterTypePlats();
+
+        //dump($type_plats);
+        $i = 0;
+        foreach($type_plats as $type_plat) {
+            $form->add("id_plat[$i]", ChoiceType::class, array('label' => $type_plat->getLibelle()));
+            $i++;
+        }
+
+        return $form;
     }
 }
