@@ -4,9 +4,9 @@
     <h1>Modifier :<br>{{ plat.libelle }}</h1>
 
     <div class="center">
-        <div class="photo_edit" style="background-image:url('{{ asset(plat.webPath) }}');"></div>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
+        <div class="photo_edit" style="background-image:url('{{ asset(plat.webPath) }}');"></div>
         <input type="submit" value="Enregistrer" />
         <input type="button" value="Annuler" back_href="{{ path('plat_index') }}" />
         {{ form_end(edit_form) }}
