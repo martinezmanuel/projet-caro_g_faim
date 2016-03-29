@@ -6,21 +6,22 @@
         <button class="marg" type="submit">Nouvel(le) ami(e)</button>
     </form>
 
+    {{ form_start(form, {'class': 'form_list' }) }}
+    <input type="hidden" name="_method" value="GET" >
+
     <div class="column-list">
         {% for personne in personnes %}
             <span>
                 <a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.nom }} {{ personne.prenom }}</a>
             </span>
             <span>
-                <form method="get" action="{{ path('personne_edit', { 'id': personne.id }) }}">
-                    <button type="submit"> modif. </button>
-                </form>
-                {{ form_start(delete_form, {'action': path('personne_delete', { 'id': personne.id }) }) }}
-                <button type="submit"> suppr. </button>
-                {{ form_end(delete_form) }}
+                <button type="submit" class="modif" formaction="{{ path('personne_edit', { 'id': personne.id }) }}"> modif. </button>
+                <button type="submit" class="delete" formaction="{{ path('personne_delete', { 'id': personne.id }) }}"> suppr. </button>
                 <br />
             </span>
         {% endfor %}
     </div>
+
+    {{ form_end(form) }}
 
 {% endblock %}

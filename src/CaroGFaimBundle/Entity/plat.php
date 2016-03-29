@@ -64,6 +64,7 @@ class plat
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
+        $this->note = "0";
     }
 
     /**

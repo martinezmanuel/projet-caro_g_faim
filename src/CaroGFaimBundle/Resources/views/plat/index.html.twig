@@ -7,6 +7,9 @@
         <button class="marg" type="submit">Nouveau plat</button>
     </form>
 
+    {{ form_start(form, {'class': 'form_list' }) }}
+    <input type="hidden" name="_method" value="GET" >
+
     <div class="column-list-ingred">
         {% for type_plat in type_plats %}
             {% if type_plat.plats.count %}
@@ -31,15 +34,12 @@
                             </div>
                         </td>
                         <td>
-                            <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
-                                <button type="submit"> modif. </button>
-                            </form>
+                            <button type="submit" class="modif" formaction="{{ path('plat_edit', { 'id': plat.id }) }}"> modif. </button>
+
                             {% if plat.diner %}
                                 <button class="button-no-click" disabled="disabled"> suppr. </button>
                             {% else %}
-                            {{ form_start(delete_form, {'action': path('plat_delete', { 'id': plat.id }) }) }}
-                                <button type="submit"> suppr. </button>
-                            {{ form_end(delete_form) }}
+                                <button type="submit" class="delete" formaction="{{ path('plat_delete', { 'id': plat.id }) }}"> suppr. </button>
                             {% endif %}
                         </td>
                     </tr>
@@ -50,6 +50,9 @@
             {% endif %}
         {% endfor %}
     </div>
+
+    {{ form_end(form) }}
+
 {% endblock %}
 
 {% block javascripts %}

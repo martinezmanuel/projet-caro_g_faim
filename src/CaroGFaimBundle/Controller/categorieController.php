@@ -105,7 +105,7 @@ class categorieController extends Controller
         $form = $this->createDeleteForm($categorie);
         $form->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($categorie);

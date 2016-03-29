@@ -25,8 +25,8 @@ class dinerController extends Controller
      */
     public function indexAction()
     {
-        $deleteForm = $this->createFormBuilder()
-            ->setMethod('DELETE')
+        $form = $this->createFormBuilder()
+            ->setMethod('POST')
             ->getForm();
 
         $em = $this->getDoctrine()->getManager();
@@ -35,7 +35,7 @@ class dinerController extends Controller
 
         return $this->render('CaroGFaimBundle:diner:index.html.twig', array(
             'diners' => $diners,
-            'delete_form' => $deleteForm->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -47,7 +47,6 @@ class dinerController extends Controller
     {
         $diner = new diner();
         $form = $this->createForm('CaroGFaimBundle\Form\dinerType', $diner);
-        $form = $this->updatePlatsForm($form, $diner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -58,10 +57,10 @@ class dinerController extends Controller
             return $this->redirectToRoute('diner_show', array('id' => $diner->getId()));
         }
 
-        return new Response("test"); /*$this->render('CaroGFaimBundle:diner:new.html.twig', array(
+        return $this->render('CaroGFaimBundle:diner:new.html.twig', array(
             'diner' => $diner,
             'form' => $form->createView(),
-        ));*/
+        ));
     }
 
     /**
@@ -117,8 +116,7 @@ class dinerController extends Controller
         $form = $this->createDeleteForm($diner);
         $form->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($diner);
             $em->flush();
@@ -152,19 +150,19 @@ class dinerController extends Controller
             ->add('estArchive', null, array('label' => 'Dîner effectué ?'))
             ->add('invites', null, array('label'=>"Invités : "));
 
-        $formTypePlat = $this->createFormBuilder();
-
-
+        /*
+         * TO CORRECT
+         *
         $em = $this->getDoctrine()->getManager();
         $type_plats = $em->getRepository("CaroGFaimBundle:type_plat")->findAll();
 
-        //dump($type_plats);
         $i = 0;
         foreach($type_plats as $type_plat) {
             dump($type_plat);
             $formTypePlat->add("libelle", ChoiceType::class, array('label' => $type_plat->getLibelle()));
             $i++;
         }
+        */
 
         return $form;
     }
