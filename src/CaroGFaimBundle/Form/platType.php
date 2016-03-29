@@ -20,7 +20,7 @@ class platType extends AbstractType
             ->add('libelle', null, array('label'=>'Nom du plat : '))
             ->add('type_plat', null, array('label'=>'Type : '))
             ->add('ingredients', null, array('label'=>'Ingrédients : '))
-            ->add('note', null, array('label'=>'Attribuer une note :', 'data'=>'0', 'attr' => array('min'=>'0', 'max'=>'5')))
+           // ->add('note', null, array('label'=>'Attribuer une note :', 'attr' => array('min'=>'0', 'max'=>'5')))
             ->add('annotations', null, array('required' => false, 'data'=>'', 'label'=> 'Annotations : '))
             ->add('photofilename', FileType::class, array('required' => false, 'data'=>'', 'label'=> 'Joindre une photo : '))
         ;

@@ -13,45 +13,44 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>&nbsp;</th>
-                        <th style="width: 50%">{{ type_plat.libelle }}</th>
+                        <th>{{ type_plat.libelle }}</th>
                         <th colspan="2">Note</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for plat in type_plat.plats %}
                     <tr>
-                        <td>
-                            {% if plat.webPath %}
-                                <div class="photo" style="background-image:url('{{ asset(plat.webPath) }}');"></div>
-                            {% endif %}
-                        </td>
-                        <td>
-                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a>
-                            <div class="row lead align_stars">
+                        <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a></td>
+                        <td>{{ plat.note }}
+		            <form action="#" method="post">
+		                Votre note<br/>
+		                <input type="hidden" name="note" value="" id="note"/>
+		                <img src="{{ asset('bundles/carogfaim/images/star_clear.gif') }}" id="clear_stars" />
+		                <img src="{{ asset('bundles/carogfaim/images/etoile1.png') }}" id="star_1" star_num="1" class="star"/>
+		                <img src="{{ asset('bundles/carogfaim/images/etoile1.png') }}" id="star_2" star_num="2" class="star"/>
+		                <img src="{{ asset('bundles/carogfaim/images/etoile1.png') }}" id="star_3" star_num="3" class="star"/>
 
-                                <div id="stars-existing" class="starrr" id_plat="{{ plat.id }}" vote="{{ plat.note }}">
-
-                            </div>
-                        </td>
-                        <td>
-                        </td>
-
+		                <!-- Ajouter autant d'étoile que nécessaire !-->
+		                <input type="submit" value="Noter" class="bouton"/>
+		            </form>
+			</td>
                         <td>
                             <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
                                 <button type="submit"> modif. </button>
                             </form>
-                            {% if plat.diner %}
+                            {#
+                            {% if plat.diners.count %}
                                 <button class="button-no-click" disabled="disabled"> suppr. </button>
                             {% else %}
+                            #}
                             {{ form_start(delete_form, {'action': path('plat_delete', { 'id': plat.id }) }) }}
                             <button type="submit"> suppr. </button>
                             {{ form_end(delete_form) }}
+                            {#
                             {% endif %}
+                            #}
                         </td>
                     </tr>
-
-
                     {% endfor %}
 
                 </tbody>

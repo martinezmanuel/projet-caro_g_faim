@@ -22,3 +22,9 @@ plat_delete:
     path:     /{id}/delete
     defaults: { _controller: "CaroGFaimBundle:plat:delete" }
     methods:  DELETE
+
+plat_vote:
+    path:     /{id}/vote
+    defaults: { _controller: "CaroGFaimBundle:plat:vote" }
+    methods:  [GET, POST]
+

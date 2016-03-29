@@ -1,0 +1,35 @@
+ /////////////////////////////
+ /* Javascript fonctions.js */
+/////////////////////////////
+
+jQuery(function($) {
+
+  ///////////
+  // Notation
+  ///////////
+  var srcIn='/bundles/carogfaim/images/etoile1.png'; //image au survol
+  var srcOut='/bundles/carogfaim/images/etoile2.png'; // image non survolée
+
+  // Survol des étoiles
+  $('.star').hover(function(){
+
+    $(this).css("cursor", "pointer");
+
+    var num=$(this).attr('star_num'); // id numérique de l'étoile survolée
+    var nbStars=$('.star').length; // Nombre d'étoiles de la classe .star
+
+    var i; // Variable d'incrémentation
+    for (i=1;i<=nbStars;i++)
+    {
+      if(i<=num) $('#star_'+i).attr({src:srcIn});  
+      else if(i>num) $('#star_'+i).attr({src:srcOut});
+      if(i==id)$('#note').attr({value:i}); // affectation de la note au formulaire
+    }
+  },function(){});
+
+  // Survol de la croix
+  $('#clear_stars').hover(function(){
+    $('.star').attr({src:srcOut});
+    $('#note').attr({value:'0'});
+  },function(){});
+});

@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mes plats</h1>
+<<<<<<< HEAD
+
+    <a href="{{ path('plat_new') }}"><button class="marg">Nouveau plat</button></a>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Note</th>
+                <th>Annotations</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plat in plats %}
+            <tr>
+                <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.id }}</a></td>
+                <td>{{ plat.libelle }}</td>
+                <td>{{ plat.note }}
+                    <form action="#" method="post">
+                        Votre note<br/>
+                        <input type="hidden" name="note" value="" id="note"/>
+                        <img src="/images/star_clear.gif" id="clear_stars" />
+                        <img src="/images/etoile1.png" id="star_1" class="star"/>
+                        <img src="/images/etoile1.png" id="star_2" class="star"/>
+                        <img src="/images/etoile1.png" id="star_3" class="star"/>
+
+                        <!-- Ajouter autant d'étoile que nécessaire !-->
+                        <input type="submit" value="Noter" class="bouton"/>
+                    </form>
+                </td>
+
+                <td>{{ plat.annotations }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">Modifier</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Editer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>Note</th>
+            <th>Annotations</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for plat in plats %}
+            <tr>
+                <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.id }}</a></td>
+                <td>{{ plat.libelle }}</td>
+                <td>{{ plat.note }}
+                    <form action="#" method="post">
+                        Votre note<br/>
+
+                        <img src="/images/star_clear.gif" id="clear_stars" />
+                        <img src="/images/etoile1.png" id="star_1" class="star"/>
+                        <img src="/images/etoile1.png" id="star_2" class="star"/>
+                        <img src="/images/etoile1.png" id="star_3" class="star"/>
+
+                        <!-- Ajouter autant d'étoile que nécessaire !-->
+
+                    </form>
+                </td>
+                <td>{{ plat.annotations }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+
+        <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>Note</th>
+            <th>Annotations</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for plat in plats %}
+            <tr>
+                <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.id }}</a></td>
+                <td>{{ plat.libelle }}</td>
+                <td>{{ plat.note }}
+                    <form action="#" method="post">
+                        Votre note<br/>
+                        <input type="hidden" name="note" value="" id="note"/>
+                        <img src="/images/star_clear.gif" id="clear_stars" />
+                        <img src="/images/etoile1.png" id="star_1" class="star"/>
+                        <img src="/images/etoile1.png" id="star_2" class="star"/>
+                        <img src="/images/etoile1.png" id="star_3" class="star"/>
+
+                        <!-- Ajouter autant d'étoile que nécessaire !-->
+                        <input type="submit" value="Noter" class="bouton"/>
+                    </form>
+                </td>
+                <td>{{ plat.annotations }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+    <form method="get" action="{{ path('plat_new') }}">
+        <button class="marg" type="submit">Nouveau plat</button>
+    </form>
+    <div class="column-list-ingred">
+        {% for type_plat in type_plats %}
+            {% if type_plat.plats.count %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>{{ type_plat.libelle }}</th>
+                        <th colspan="2">Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plat in type_plat.plats %}
+                    <tr>
+                        <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a></td>
+                        <td>{{ plat.note }}
+		            <form action="#" method="post">
+		                Votre note<br/>
+		                <input type="hidden" name="note" value="" id="note"/>
+		                <img src="{{ asset('bundles/carogfaim/images/star_clear.gif') }}" id="clear_stars" />
+		                <img src="{{ asset('bundles/carogfaim/images/etoile1.png') }}" id="star_1" class="star"/>
+		                <img src="{{ asset('bundles/carogfaim/images/etoile1.png') }}" id="star_2" class="star"/>
+		                <img src="{{ asset('bundles/carogfaim/images/etoile1.png') }}" id="star_3" class="star"/>
+
+		                <!-- Ajouter autant d'étoile que nécessaire !-->
+		                <input type="submit" value="Noter" class="bouton"/>
+		            </form>
+			</td>
+                        <td>
+                            <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
+                                <button type="submit"> modif. </button>
+                            </form>
+                            {#
+                            {% if plat.diners.count %}
+                                <button class="button-no-click" disabled="disabled"> suppr. </button>
+                            {% else %}
+                            #}
+                            {{ form_start(delete_form, {'action': path('plat_delete', { 'id': plat.id }) }) }}
+                            <button type="submit"> suppr. </button>
+                            {{ form_end(delete_form) }}
+                            {#
+                            {% endif %}
+                            #}
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+        <script src="{{ asset('bundles/carogfaim/js/script.js) }}"></script>
+{% endblock %}
+

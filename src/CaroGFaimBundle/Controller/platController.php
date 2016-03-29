@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CaroGFaimBundle\Entity\plat;
 use CaroGFaimBundle\Form\platType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * plat controller.
@@ -15,6 +16,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class platController extends Controller
 {
+    /**
+     * @var string
+     */
+    private $oldPhoto;
+
     /**
      * Lists all plat entities.
      *
@@ -85,6 +91,9 @@ class platController extends Controller
     public function editAction(Request $request, plat $plat)
     {
         $deleteForm = $this->createDeleteForm($plat);
+
+        $this->oldPhoto = $plat->getPhotofilename();
+
         $editForm = $this->createForm('CaroGFaimBundle\Form\platType', $plat);
         $editForm->handleRequest($request);
 
@@ -102,6 +111,20 @@ class platController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+    /**
+     * Displays a form to edit an existing plat entity.
+     *
+     */
+    public function voteAction(Request $request, plat $plat)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $str = $request->getContent();
+        $array_vote = explode("=", $str);
+        $plat->setNote($array_vote[1]);
+        $em->persist($plat);
+        $em->flush();
+        return new Response("");
     }
 
     /**
@@ -151,12 +174,13 @@ class platController extends Controller
     {
         // the file property can be empty if the field is not required
 
-        if (null === $form["photofilename"]) {
+        $file = ($form['photofilename']->getData());
+
+        if (!is_object($file)) {
+            $plat->setPhotofilename($this->oldPhoto);
             return true;
         }
 
-
-        $file = ($form['photofilename']->getData());
 
         $extension = $file->guessExtension();
         if (!$extension) {
