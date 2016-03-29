@@ -11,6 +11,8 @@ use CaroGFaimBundle\Entity\diner;
 use CaroGFaimBundle\Form\dinerType;
 use CaroGFaimBundle\Entity\type_diner;
 
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * diner controller.
  *
@@ -56,10 +58,10 @@ class dinerController extends Controller
             return $this->redirectToRoute('diner_show', array('id' => $diner->getId()));
         }
 
-        return $this->render('CaroGFaimBundle:diner:new.html.twig', array(
+        return new Response("test"); /*$this->render('CaroGFaimBundle:diner:new.html.twig', array(
             'diner' => $diner,
             'form' => $form->createView(),
-        ));
+        ));*/
     }
 
     /**
@@ -150,15 +152,17 @@ class dinerController extends Controller
             ->add('estArchive', null, array('label' => 'Dîner effectué ?'))
             ->add('invites', null, array('label'=>"Invités : "));
 
+        $formTypePlat = $this->createFormBuilder();
+
 
         $em = $this->getDoctrine()->getManager();
         $type_plats = $em->getRepository("CaroGFaimBundle:type_plat")->findAll();
-        //$type_plats = $diner->getPresenterTypePlats();
 
         //dump($type_plats);
         $i = 0;
         foreach($type_plats as $type_plat) {
-            $form->add("libelle", ChoiceType::class, array('label' => $type_plat->getLibelle()));
+            dump($type_plat);
+            $formTypePlat->add("libelle", ChoiceType::class, array('label' => $type_plat->getLibelle()));
             $i++;
         }
 
