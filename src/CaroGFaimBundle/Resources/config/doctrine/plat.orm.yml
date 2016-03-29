@@ -18,6 +18,10 @@ CaroGFaimBundle\Entity\plat:
         annotations:
             type: text
             nullable: true
+        photofilename:
+            type: string
+            length: 255
+            nullable: true
     manyToOne:
         type_plat:
             targetEntity: type_plat
@@ -26,14 +30,23 @@ CaroGFaimBundle\Entity\plat:
                 name: fid_type_plat
                 referencedColumn: id
                 nullable: false
+        diner:
+            targetEntity: diner
+            inversedBy: plats_servis
+            joinColumn:
+                name: fid_diner
+                referencedColumn: id
+                nullable: true
     manyToMany:
         ingredients:
             targetEntity: ingredient
+            inversedBy: apparaitre_plats
             joinTable:
                 name: contenir
                 joinColumns:
                     fid_plat:
                         referenceColumnName: id
+                        onDelete: cascade
                 inverseJoinColumns:
                     fid_ingredient:
                         referenceColumnName: id

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use CaroGFaimBundle\Entity\plat;
 use CaroGFaimBundle\Form\platType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * plat controller.
@@ -26,8 +27,9 @@ class platController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $plats = $em->getRepository('CaroGFaimBundle:plat')->findAll();
-        $type_plats = $em->getRepository('CaroGFaimBundle:type_plat')->findAll();
+        //$plats = $em->getRepository('CaroGFaimBundle:plat')->findAll();
+        //$type_plats = $em->getRepository('CaroGFaimBundle:type_plat')->findAll();
+        $type_plats = $em->getRepository('CaroGFaimBundle:plat')->findAllPlatsByType();
 
         return $this->render('CaroGFaimBundle:plat:index.html.twig', array(
            // 'plats' => $plats,
@@ -47,9 +49,11 @@ class platController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($plat);
-            $em->flush();
+            if ($this->updateUploadedFile($form, $plat)) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($plat);
+                $em->flush();
+            }
 
             return $this->redirectToRoute('plat_show', array('id' => $plat->getId()));
         }
@@ -85,10 +89,11 @@ class platController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($plat);
-            $em->flush();
-
+            if ($this->updateUploadedFile($editForm, $plat)) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($plat);
+                $em->flush();
+            }
             return $this->redirectToRoute('plat_show', array('id' => $plat->getId()));
         }
 
@@ -133,4 +138,38 @@ class platController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Save on disk the uploaded file
+     *
+     * @param \Symfony\Component\Form\Form The form
+     * @param \CaroGFaimBundle\Entity\plat
+     *
+     * @return bool true if no error
+     */
+    private function updateUploadedFile(\Symfony\Component\Form\Form $form, plat $plat)
+    {
+        // the file property can be empty if the field is not required
+
+        if (null === $form["photofilename"]) {
+            return true;
+        }
+
+
+        $file = ($form['photofilename']->getData());
+
+        $extension = $file->guessExtension();
+        if (!$extension) {
+            // extension cannot be guessed
+            $extension = 'bin';
+        }
+        $newFilename = sha1(uniqid(mt_rand(), true)).'.'.$extension;
+        $file->move($plat->getUploadRootDir(), $newFilename);
+
+        $plat->setPhotofilename($newFilename);
+
+
+        return true;
+    }
+
 }

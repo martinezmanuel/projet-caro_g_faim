@@ -16,4 +16,31 @@ CaroGFaimBundle\Entity\diner:
         estArchive:
             type: boolean
             column: est_archive
+    manyToMany:
+        presenter_type_plats:
+            targetEntity: type_plat
+            joinTable:
+                name: presenter
+                joinColumns:
+                    fid_diner:
+                        referenceColumnName: id
+                inverseJoinColumns:
+                    fid_type_plat:
+                        referenceColumnName: id
+        invites:
+            targetEntity: personne
+            inversedBy: diners
+            joinTable:
+                name: inviter
+                joinColumns:
+                    fid_diner:
+                        referenceColumnName: id
+                inverseJoinColumns:
+                    fid_personne:
+                        referenceColumnName: id
+                        onDelete: cascade
+    oneToMany:
+        plats_servis:
+            targetEntity: plat
+            mappedBy: diner
     lifecycleCallbacks: {  }

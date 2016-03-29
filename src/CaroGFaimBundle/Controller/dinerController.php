@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use CaroGFaimBundle\Entity\diner;
 use CaroGFaimBundle\Form\dinerType;
+use CaroGFaimBundle\Entity\type_diner;
 
 /**
  * diner controller.
@@ -66,8 +67,12 @@ class dinerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($diner);
 
+        $em = $this->getDoctrine()->getManager();
+        $type_plats = $em->getRepository("CaroGFaimBundle:type_plat")->findAll();
+
         return $this->render('CaroGFaimBundle:diner:show.html.twig', array(
             'diner' => $diner,
+            'type_plats' => $type_plats,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -87,7 +92,7 @@ class dinerController extends Controller
             $em->persist($diner);
             $em->flush();
 
-            return $this->redirectToRoute('diner_edit', array('id' => $diner->getId()));
+            return $this->redirectToRoute('diner_show', array('id' => $diner->getId()));
         }
 
         return $this->render('CaroGFaimBundle:diner:edit.html.twig', array(

@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifier un plat</h1>
+    <h1>Modifier :<br>{{ plat.libelle }}</h1>
 
     <div class="center">
+        <div class="photo_edit" style="background-image:url('{{ asset(plat.webPath) }}');"></div>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Enregistrer" />

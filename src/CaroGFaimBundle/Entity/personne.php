@@ -32,11 +32,27 @@ class personne
     private $exclure_ingredients;
 
     /**
+     * @var ArrayCollection
+     */
+    private $diners;
+
+    /**
      * constructor
      */
     public function __construct()
     {
         $this->exclure_ingredients = new ArrayCollection();
+        $this->diners = new ArrayCollection();
+    }
+
+    /**
+     * Return "nom" et "prenom"
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return "{$this->nom} {$this->prenom}";
     }
 
     /**
@@ -96,39 +112,6 @@ class personne
     }
 
     /**
-     * Add ingredients
-     *
-     * @param \CaroGFaimBundle\Entity\ingredient $ingredients
-     * @return personne
-     */
-    public function addIngredient(\CaroGFaimBundle\Entity\ingredient $ingredients)
-    {
-        $this->exclure_ingredients[] = $ingredients;
-
-        return $this;
-    }
-
-    /**
-     * Remove ingredients
-     *
-     * @param \CaroGFaimBundle\Entity\ingredient $ingredients
-     */
-    public function removeIngredient(\CaroGFaimBundle\Entity\ingredient $ingredients)
-    {
-        $this->exclure_ingredients->removeElement($ingredients);
-    }
-
-    /**
-     * Get ingredients
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getExclureIngredients()
-    {
-        return $this->exclure_ingredients;
-    }
-
-    /**
      * Add exclure_ingredients
      *
      * @param \CaroGFaimBundle\Entity\ingredient $exclureIngredients
@@ -149,5 +132,48 @@ class personne
     public function removeExclureIngredient(\CaroGFaimBundle\Entity\ingredient $exclureIngredients)
     {
         $this->exclure_ingredients->removeElement($exclureIngredients);
+    }
+
+    /**
+     * Get ingredients
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExclureIngredients()
+    {
+        return $this->exclure_ingredients;
+    }
+
+    /**
+     * Add diners
+     *
+     * @param \CaroGFaimBundle\Entity\diner $diners
+     * @return personne
+     */
+    public function addDiner(\CaroGFaimBundle\Entity\diner $diners)
+    {
+        $this->diners[] = $diners;
+
+        return $this;
+    }
+
+    /**
+     * Remove diners
+     *
+     * @param \CaroGFaimBundle\Entity\diner $diners
+     */
+    public function removeDiner(\CaroGFaimBundle\Entity\diner $diners)
+    {
+        $this->diners->removeElement($diners);
+    }
+
+    /**
+     * Get diners
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiners()
+    {
+        return $this->diners;
     }
 }

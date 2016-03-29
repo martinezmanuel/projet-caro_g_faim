@@ -12,4 +12,30 @@ use Doctrine\ORM\EntityRepository;
  */
 class categorieRepository extends EntityRepository
 {
+    /**
+     * Finds all "category" and order them by "libelle"
+     *
+     * @return array The entities.
+     */
+    public function findAll()
+    {
+        return $this->findBy(array(), array("libelle"=>"ASC"));
+    }
+
+    /**
+     * Finds all categories with ingredients
+     */
+    public function findAllCategoriesWithIngredients()
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+            "SELECT cat, ings
+             FROM CaroGFaimBundle:categorie cat
+             LEFT JOIN cat.ingredients ings
+             ORDER BY cat.libelle ASC"
+        );
+        $results = $query->getResult();
+        return $results;
+    }
 }

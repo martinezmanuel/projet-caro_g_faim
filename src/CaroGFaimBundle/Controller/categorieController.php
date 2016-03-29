@@ -25,7 +25,7 @@ class categorieController extends Controller
                                 ->getForm();
 
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
+        $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAllCategoriesWithIngredients();
 
         return $this->render("CaroGFaimBundle:categorie:index.html.twig", array(
             'categories' => $categories,

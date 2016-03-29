@@ -26,7 +26,7 @@ class ingredientController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('CaroGFaimBundle:categorie')->findAll();
+        $categories = $em->getRepository('CaroGFaimBundle:ingredient')->findAllIngredientsByCategories();
 
         return $this->render("CaroGFaimBundle:ingredient:index.html.twig", array(
             'categories' => $categories,
@@ -49,7 +49,7 @@ class ingredientController extends Controller
             $em->persist($ingredient);
             $em->flush();
 
-            return $this->redirectToRoute('ingredient_show', array('id' => $ingredient->getId()));
+            return $this->redirectToRoute('ingredient_index');
         }
 
         return $this->render("CaroGFaimBundle:ingredient:new.html.twig", array(
@@ -87,7 +87,7 @@ class ingredientController extends Controller
             $em->persist($ingredient);
             $em->flush();
 
-            return $this->redirectToRoute('ingredient_show', array('id' => $ingredient->getId()));
+            return $this->redirectToRoute('ingredient_index');
         }
 
         return $this->render("CaroGFaimBundle:ingredient:edit.html.twig", array(

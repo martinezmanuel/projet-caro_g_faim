@@ -18,12 +18,17 @@ CaroGFaimBundle\Entity\personne:
     manyToMany:
         exclure_ingredients:
             targetEntity: ingredient
+            inversedBy: personnes
             joinTable:
                 name: ne_pas_manger
                 joinColumns:
                     fid_personne:
                         referenceColumnName: id
+                        onDelete: cascade
                 inverseJoinColumns:
                     fid_ingredient:
                         referenceColumnName: id
+        diners:
+            targetEntity: diner
+            mappedBy: invites
     lifecycleCallbacks: {  }

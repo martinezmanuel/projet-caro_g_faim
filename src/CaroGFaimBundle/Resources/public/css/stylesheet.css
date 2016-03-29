@@ -71,6 +71,16 @@ button:hover {
     color: forestgreen;
 }
 
+.center input[type=submit],
+.center input[type=button] {
+    color: lightslategrey;
+}
+
+.center input[type=submit]:hover,
+.center input[type=button]:hover {
+    color: forestgreen;
+}
+
 .column-list span>a {
     color: forestgreen;
 }

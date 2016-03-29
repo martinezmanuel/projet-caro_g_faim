@@ -56,7 +56,7 @@
 }
 
 .show-table {
-    margin: auto;
+    margin: 2.5% auto;
     width: 100%;
 }
 
@@ -67,4 +67,26 @@
 }
 .show-table .table.table-bordered tr td:last-child ul {
     padding: 0;
+}
+
+.photo {
+    background-size:cover;
+    height:50px;
+    width:50px;
+}
+
+.photo_show {
+    margin:0 auto;
+    background-size:cover;
+    height:250px;
+    width:250px;
+    border:8px solid white;
+}
+
+.photo_edit {
+    background-size:cover;
+    height:200px;
+    width:200px;
+    border:8px solid white;
+    margin-bottom:20px;
 }

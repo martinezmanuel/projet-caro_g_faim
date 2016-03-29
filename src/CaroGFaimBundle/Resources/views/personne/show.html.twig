@@ -30,13 +30,34 @@
                     {% endif %}
                 </td>
             </tr>
-            <tr>
-            <td colspan="3">
+
+        <tr>
+            <td colspan="2">
                 <form method="get" action="{{ path('personne_index') }}">
                     <button class="marg" type="submit">Retour à la liste</button>
                 </form>
             </td>
-            </tr>
+            <td>
+                <form method="get" action="{{ path('personne_edit', { 'id': personne.id }) }}">
+                    <button type="submit"> modif. </button>
+                </form>
+                {#
+                {% if plat.diners.count %}
+                    <button class="button-no-click" disabled="disabled"> suppr. </button>
+                {% else %}
+                #}
+                {{ form_start(delete_form, {'action': path('personne_delete', { 'id': personne.id }) }) }}
+                <button type="submit"> suppr. </button>
+                {{ form_end(delete_form) }}
+                {#
+                {% endif %}
+                #}
+            </td>
+
+        </tr>
+
+
+
         </tbody>
     </table>
     </div>

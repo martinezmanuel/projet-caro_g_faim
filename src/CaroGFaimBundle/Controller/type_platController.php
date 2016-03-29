@@ -101,7 +101,8 @@ class type_platController extends Controller
         $form = $this->createDeleteForm($type_plat);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+//        if ($form->isSubmitted() && $form->isValid())
+        {
             $em = $this->getDoctrine()->getManager();
             $em->remove($type_plat);
             $em->flush();

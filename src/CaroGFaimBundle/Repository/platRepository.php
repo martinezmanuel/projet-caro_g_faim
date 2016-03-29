@@ -12,4 +12,35 @@ use Doctrine\ORM\EntityRepository;
  */
 class platRepository extends EntityRepository
 {
+    /**
+     * Finds all "plat" and order them by "libelle"
+     *
+     * @return array The entities.
+     */
+    public function findAll()
+    {
+        return $this->findBy(array(), array("libelle"=>"ASC"));
+    }
+
+    /**
+     * Finds all ingredients sorted by categories
+     */
+
+    public function findAllPlatsByType()
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+            "SELECT t, p, d
+             FROM CaroGFaimBundle:type_plat t
+             LEFT JOIN t.plats p
+             LEFT JOIN p.diner d
+             ORDER BY t.id ASC, p.libelle ASC"
+        );
+        $results = $query->getResult();
+        return $results;
+
+    }
+
+
 }
