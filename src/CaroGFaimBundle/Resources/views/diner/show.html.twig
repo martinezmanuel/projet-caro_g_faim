@@ -16,12 +16,22 @@
                 <td>{% if diner.dateDiner %}{{ diner.dateDiner|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td style="text-align: left">{% if diner.estArchive %}Oui{% else %}Non{% endif %}</td>
             </tr>
+
+        <thead>
+        <tr>
+            <th>Invités</th>
+            <th colspan="2">Menu</th>
+        </tr>
+        </thead>
+
+        <tr>
+                <td>noms...</td>
+            <td>
             {% for type_plat in type_plats %}
-            <tr>
-                <td>{{ type_plat }}</td>
-                <td style="text-align: left"></td>
-            </tr>
+                    <li>{{ type_plat }}</li>
             {% endfor %}
+            </td>
+        </tr>
             <tr>
                 <td>
                     <form method="get" action="{{ path('diner_index') }}">

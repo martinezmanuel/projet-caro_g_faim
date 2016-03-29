@@ -64,21 +64,23 @@ button.button-no-click:hover {
 }
 
 button {
-    color: lightslategrey;
+    color: forestgreen;
 }
 
 button:hover {
-    color: forestgreen;
-}
-
-.center input[type=submit],
-.center input[type=button] {
     color: lightslategrey;
 }
 
-.center input[type=submit]:hover,
-.center input[type=button]:hover {
+.center input[type=submit],
+.center input[type=file],
+.center input[type=button] {
     color: forestgreen;
+}
+
+.center input[type=submit]:hover,
+.center input[type=file]:hover,
+.center input[type=button]:hover {
+    color: lightslategrey;
 }
 
 .column-list span>a {
@@ -95,5 +97,6 @@ button:hover {
 
 .align_stars
 {
-    margin-left: 0px;
+    margin-left: 0;
+    margin-bottom: 0;
 }
