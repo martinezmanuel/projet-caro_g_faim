@@ -26,6 +26,9 @@ var __slice = [].slice;
             }
             this.createStars();
             this.syncRating();
+
+            this.setRating(this.$el.attr("vote"));
+
             this.$el.on('mouseover.starrr', 'span', function(e) {
                 $(this).css("cursor", "pointer");
                 return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
@@ -115,11 +118,13 @@ var __slice = [].slice;
 
 $(function() {
     $result = $(".starrr").starrr();
-    $(".starr").each(function(){console.log("star");});
+    //$(".starr").each(function(){console.log("star");});
     return $result;
 });
 
 $( document ).ready(function() {
+
+    $result = $(".starrr").starrr();
 
     $('#stars').on('starrr:change', function(e, value){
         $('#count').html(value);
@@ -128,4 +133,5 @@ $( document ).ready(function() {
     $('#stars-existing').on('starrr:change', function(e, value){
         $('#count-existing').html(value);
     });
+
 });
