@@ -82,3 +82,8 @@ button:hover {
 .list-form select[multiple] {
     height: 100vh;
 }
+
+*
+{
+    margin-right: -43px;
+}

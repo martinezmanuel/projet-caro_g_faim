@@ -2,11 +2,9 @@
 
 {% block body %}
     <h1>Mes plats</h1>
-
     <form method="get" action="{{ path('plat_new') }}">
         <button class="marg" type="submit">Nouveau plat</button>
     </form>
-
     <div class="column-list-ingred">
         {% for type_plat in type_plats %}
             {% if type_plat.plats.count %}
@@ -21,18 +19,13 @@
                     {% for plat in type_plat.plats %}
                     <tr>
                         <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a></td>
-                        <td>{{ plat.note }}
+                        <td>{{ plat.note }}</td>
 
+                        <div class="row lead">
 
+                            <div id="stars-existing" class="starrr" </div>
 
-                            <div class="row lead">
-
-                                <div id="stars-existing" class="starrr" </div>
-
-                            </div>
-
-
-			</td>
+                        </div>
                         <td>
                             <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
                                 <button type="submit"> modif. </button>
@@ -50,8 +43,6 @@
                             #}
                         </td>
                     </tr>
-
-
                     {% endfor %}
 
                 </tbody>
@@ -60,9 +51,3 @@
         {% endfor %}
     </div>
 {% endblock %}
-
-{% block javascripts %}
-	{{ parent() }}
-        <script src="{{ asset('bundles/carogfaim/js/script.js') }}"></script>
-{% endblock %}
-
