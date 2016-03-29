@@ -16,6 +16,12 @@
                 <td>{% if diner.dateDiner %}{{ diner.dateDiner|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td style="text-align: left">{% if diner.estArchive %}Oui{% else %}Non{% endif %}</td>
             </tr>
+            {% for type_plat in type_plats %}
+            <tr>
+                <td>{{ type_plat }}</td>
+                <td style="text-align: left"></td>
+            </tr>
+            {% endfor %}
             <tr>
                 <td>
                     <form method="get" action="{{ path('diner_index') }}">
@@ -26,18 +32,10 @@
                     <form method="get" action="{{ path('diner_edit', { 'id': diner.id }) }}">
                         <button type="submit"> modif. </button>
                     </form>
-                    {#
-                    {% if plat.diners.count %}
-                        <button class="button-no-click" disabled="disabled"> suppr. </button>
-                    {% else %}
-                    #}
                     {{ form_start(delete_form, {'action': path('diner_delete', { 'id': diner.id }) }) }}
                     <button type="submit"> suppr. </button>
                     {{ form_end(delete_form) }}
-                    {#
-                    {% endif %}
-                    #}
-                </td>
+               </td>
 
             </tr>
 
