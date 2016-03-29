@@ -10,10 +10,10 @@
     <div class="column-list-ingred">
         {% for type_plat in type_plats %}
             {% if type_plat.plats.count %}
-            <table class="table table-bordered">
+            <table class="table table-bordered td-two">
                 <thead>
                     <tr>
-                        <th colspan="3" style="width: 50%">{{ type_plat.libelle }}</th>
+                        <th colspan="3">{{ type_plat.libelle }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,9 +27,7 @@
                         <td>
                             <a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a>
                             <div class="row lead align_stars">
-
                                 <div id="stars-existing" class="starrr" id_plat="{{ plat.id }}" vote="{{ plat.note }}"></div>
-
                             </div>
                         </td>
                         <td>
@@ -40,13 +38,11 @@
                                 <button class="button-no-click" disabled="disabled"> suppr. </button>
                             {% else %}
                             {{ form_start(delete_form, {'action': path('plat_delete', { 'id': plat.id }) }) }}
-                            <button type="submit"> suppr. </button>
+                                <button type="submit"> suppr. </button>
                             {{ form_end(delete_form) }}
                             {% endif %}
                         </td>
                     </tr>
-
-
                     {% endfor %}
 
                 </tbody>

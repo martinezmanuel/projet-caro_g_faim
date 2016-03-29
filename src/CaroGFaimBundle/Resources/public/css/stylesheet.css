@@ -97,5 +97,6 @@ button:hover {
 
 .align_stars
 {
-    margin-left: 0px;
+    margin-left: 0;
+    margin-bottom: 0;
 }
