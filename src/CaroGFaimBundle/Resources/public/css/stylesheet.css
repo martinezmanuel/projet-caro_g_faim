@@ -94,3 +94,8 @@ button:hover {
 .list-form select[multiple] {
     height: 100vh;
 }
+
+.align_stars
+{
+    margin-left: 0px;
+}
