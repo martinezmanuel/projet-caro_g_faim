@@ -17,6 +17,11 @@ use Symfony\Component\HttpFoundation\Response;
 class platController extends Controller
 {
     /**
+     * @var string
+     */
+    private $oldPhoto;
+
+    /**
      * Lists all plat entities.
      *
      */
@@ -86,6 +91,9 @@ class platController extends Controller
     public function editAction(Request $request, plat $plat)
     {
         $deleteForm = $this->createDeleteForm($plat);
+
+        $this->oldPhoto = $plat->getPhotofilename();
+
         $editForm = $this->createForm('CaroGFaimBundle\Form\platType', $plat);
         $editForm->handleRequest($request);
 
@@ -166,11 +174,10 @@ class platController extends Controller
     {
         // the file property can be empty if the field is not required
 
-        $oldPhoto = $plat->getPhotofilename();
         $file = ($form['photofilename']->getData());
 
         if (!is_object($file)) {
-            $plat->setPhotofilename($oldPhoto);
+            $plat->setPhotofilename($this->oldPhoto);
             return true;
         }
 
