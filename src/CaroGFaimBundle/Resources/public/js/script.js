@@ -27,13 +27,27 @@ var __slice = [].slice;
             this.createStars();
             this.syncRating();
             this.$el.on('mouseover.starrr', 'span', function(e) {
+                $(this).css("cursor", "pointer");
                 return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
             });
             this.$el.on('mouseout.starrr', function() {
                 return _this.syncRating();
             });
             this.$el.on('click.starrr', 'span', function(e) {
-                return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+                $(this).css("cursor", "pointer");
+
+                result = _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+                plat_note = _this.options.rating;
+                plat_id = $(this).parent().attr("id_plat");
+
+                $.post(
+                    "/plat/"+plat_id+"/vote",
+                    'note='+plat_note,
+                    function(data) {
+                        console.log(data);
+                    }, "json");
+
+                return result;
             });
             this.$el.on('starrr:change', this.options.change);
         }
@@ -100,7 +114,9 @@ var __slice = [].slice;
 })(window.jQuery, window);
 
 $(function() {
-    return $(".starrr").starrr();
+    $result = $(".starrr").starrr();
+    $(".starr").each(function(){console.log("star");});
+    return $result;
 });
 
 $( document ).ready(function() {

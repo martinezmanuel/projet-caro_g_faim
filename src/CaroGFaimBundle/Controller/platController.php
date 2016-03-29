@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CaroGFaimBundle\Entity\plat;
 use CaroGFaimBundle\Form\platType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * plat controller.
@@ -103,6 +104,20 @@ class platController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    /**
+     * Displays a form to edit an existing plat entity.
+     *
+     */
+    public function voteAction(Request $request, plat $plat)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $str = $request->getContent();
+        $array_vote = explode("=", $str);
+        $plat->setNote($array_vote[1]);
+        $em->persist($plat);
+        $em->flush();
+        return new Response("");
+    }
 
     /**
      * Deletes a plat entity.
@@ -151,12 +166,14 @@ class platController extends Controller
     {
         // the file property can be empty if the field is not required
 
-        if (null === $form["photofilename"]) {
+        $oldPhoto = $plat->getPhotofilename();
+        $file = ($form['photofilename']->getData());
+
+        if (!is_object($file)) {
+            $plat->setPhotofilename($oldPhoto);
             return true;
         }
 
-
-        $file = ($form['photofilename']->getData());
 
         $extension = $file->guessExtension();
         if (!$extension) {

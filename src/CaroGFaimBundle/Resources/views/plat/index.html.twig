@@ -21,31 +21,22 @@
                 <tbody>
                     {% for plat in type_plat.plats %}
                     <tr>
-<<<<<<< HEAD
-                        <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a></td>
-                        <td>{{ plat.note }}
-
-
-
-                            <div class="row lead">
-
-                                <div id="stars-existing" class="starrr" </div>
-
-                            </div>
-
-
-			</td>
-=======
                         <td>
-                            {%  if plat.webPath %}
+                            {% if plat.webPath %}
                                 <div class="photo" style="background-image:url('{{ asset(plat.webPath) }}');"></div>
                             {% endif %}
                         </td>
                         <td>
                             <a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.libelle }}</a>
+                            <div class="row lead align_stars">
+
+                                <div id="stars-existing" class="starrr" id_plat="{{ plat.id }}">
+
+                            </div>
                         </td>
-                        <td>{{ plat.note }}</td>
->>>>>>> 106f9ec6f1f06214b1c041f4e2e013d808457370
+                        <td>
+                        </td>
+
                         <td>
                             <form method="get" action="{{ path('plat_edit', { 'id': plat.id }) }}">
                                 <button type="submit"> modif. </button>
