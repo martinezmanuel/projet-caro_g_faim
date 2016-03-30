@@ -4,10 +4,14 @@ namespace CaroGFaimBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use CaroGFaimBundle\Entity\diner;
 use CaroGFaimBundle\Form\dinerType;
 use CaroGFaimBundle\Entity\type_diner;
+
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * diner controller.
@@ -21,8 +25,8 @@ class dinerController extends Controller
      */
     public function indexAction()
     {
-        $deleteForm = $this->createFormBuilder()
-            ->setMethod('DELETE')
+        $form = $this->createFormBuilder()
+            ->setMethod('POST')
             ->getForm();
 
         $em = $this->getDoctrine()->getManager();
@@ -31,7 +35,7 @@ class dinerController extends Controller
 
         return $this->render('CaroGFaimBundle:diner:index.html.twig', array(
             'diners' => $diners,
-            'delete_form' => $deleteForm->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -85,6 +89,7 @@ class dinerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($diner);
         $editForm = $this->createForm('CaroGFaimBundle\Form\dinerType', $diner);
+        //$editForm = $this->updatePlatsForm($editForm, $diner);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -111,8 +116,7 @@ class dinerController extends Controller
         $form = $this->createDeleteForm($diner);
         $form->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($diner);
             $em->flush();
@@ -135,5 +139,31 @@ class dinerController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     *
+     */
+    private function updatePlatsForm( Form $form, diner $diner)
+    {
+        $form->add('dateDiner', 'datetime', array('label' => 'Date du dîner'))
+            ->add('estArchive', null, array('label' => 'Dîner effectué ?'))
+            ->add('invites', null, array('label'=>"Invités : "));
+
+        /*
+         * TO CORRECT
+         *
+        $em = $this->getDoctrine()->getManager();
+        $type_plats = $em->getRepository("CaroGFaimBundle:type_plat")->findAll();
+
+        $i = 0;
+        foreach($type_plats as $type_plat) {
+            dump($type_plat);
+            $formTypePlat->add("libelle", ChoiceType::class, array('label' => $type_plat->getLibelle()));
+            $i++;
+        }
+        */
+
+        return $form;
     }
 }

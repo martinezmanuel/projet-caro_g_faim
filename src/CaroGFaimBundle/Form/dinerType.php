@@ -18,11 +18,13 @@ class dinerType extends AbstractType
             ->add('invites', null, array('label'=>"Invités : "));
 
         $diner = $builder->getData();
+
         $type_plats = $diner->getPresenterTypePlats();
 
+        $i = 0;
         foreach($type_plats as $type_plat) {
-            $builder->add($type_plat->getLibelle(), ChoiceType::class, array('label' => ""));
-
+            $builder->add("id_plat[$i]", ChoiceType::class, array('label' => $type_plat->getLibelle()));
+            $i++;
         }
     }
 

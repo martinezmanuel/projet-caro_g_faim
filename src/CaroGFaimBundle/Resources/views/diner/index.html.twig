@@ -6,6 +6,9 @@
         <button class="marg" type="submit">Nouveau dîner</button>
     </form>
 
+    {{ form_start(form, {'class': 'form_list' }) }}
+    <input type="hidden" name="_method" value="GET" >
+
     <div class="show-table">
         <table class="table table-bordered">
             <thead>
@@ -24,17 +27,15 @@
                     </td>
                     <td>{% if diner.estArchive %}Oui{% else %}Non{% endif %}</td>
                     <td>
-                        <form method="get" action="{{ path('diner_edit', { 'id': diner.id }) }}">
-                            <button type="submit"> modif. </button>
-                        </form>
-                        {{ form_start(delete_form, {'action': path('diner_delete', { 'id': diner.id }) }) }}
-                        <button type="submit"> suppr. </button>
-                        {{ form_end(delete_form) }}
+                        <button type="submit" class="modif" formaction="{{ path('diner_edit', { 'id': diner.id }) }}"> modif. </button>
+                        <button type="submit" class="delete" formaction="{{ path('diner_delete', { 'id': diner.id }) }}"> suppr. </button>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
+
+    {{ form_end(form) }}
 
 {% endblock %}

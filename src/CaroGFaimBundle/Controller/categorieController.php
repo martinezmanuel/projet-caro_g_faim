@@ -20,8 +20,8 @@ class categorieController extends Controller
      */
     public function indexAction()
     {
-        $deleteForm = $this->createFormBuilder()
-                                ->setMethod('DELETE')
+        $form = $this->createFormBuilder()
+                                ->setMethod('POST')
                                 ->getForm();
 
         $em = $this->getDoctrine()->getManager();
@@ -29,7 +29,7 @@ class categorieController extends Controller
 
         return $this->render("CaroGFaimBundle:categorie:index.html.twig", array(
             'categories' => $categories,
-            'delete_form' => $deleteForm->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -105,7 +105,7 @@ class categorieController extends Controller
         $form = $this->createDeleteForm($categorie);
         $form->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($categorie);
